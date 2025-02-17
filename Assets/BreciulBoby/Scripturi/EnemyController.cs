@@ -62,8 +62,18 @@ public class EnemyController : MonoBehaviour
 
     public void moveEnemy(Vector3 direction)
     {
-        direction.y = 0f;
-        print(direction);
-        controller.Move(direction * speed * Time.deltaTime);
+        //direction.y = 0f;
+        //print(direction);
+        //controller.Move(direction * speed * Time.deltaTime);
+
+        if (controller != null)
+        {
+            direction.y = 0f;
+            controller.Move(direction * speed * Time.deltaTime);
+        }
+        else
+        {
+            Debug.LogError("No controller attached" + gameObject.name);
+        }
     }
 }

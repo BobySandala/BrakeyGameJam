@@ -2,16 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GainaController : EnemyController
+public class LupController : EnemyController
 {
-    public float fugeGaina = 5f;
-    public GameObject glont;
-    public float speedOu = 5f;
-    public float lifeSpan = 10f;
-    public float attackSpeed = 1f;
-    public float nextAttackSpeed = 0f;
-
-    public float patrolAreaSize = 25f;
+    public float fugeLupu = 5f;
+    public float patrolAreaSize = 15f;
     public float patrolSpeed = 3f;
     private Vector3 targetPosition;
     private bool isPatrolling = true;
@@ -24,6 +18,7 @@ public class GainaController : EnemyController
     {
         base.Start();
         setPatrolPoint();
+        
     }
 
     // Update is called once per frame
@@ -36,33 +31,19 @@ public class GainaController : EnemyController
             Patrol();
         }
     }
-    
-    public override void SeePlayer(Vector3 playerPosition)
+
+    public void seeGaina(Vector3 gainaPosition)
     {
-        base.SeePlayer(playerPosition);
-        float distance = Vector3.Distance(transform.position, playerPosition);
-        
-        if (distance < fugeGaina)
+        float distance = Vector3.Distance(transform.position, gainaPosition);
+
+        if (distance < 1f)
         {
             isPatrolling = false;
-            base.moveEnemy(-(playerPosition - transform.position).normalized);
-        }
-        else if (Time.time >= nextAttackSpeed)
-        {
-            Vector3 direction = (playerPosition - transform.position).normalized;
-            Vector3 startPosition = transform.position;
-            GameObject ouInstance = Instantiate(glont, startPosition, Quaternion.identity);
-            OuController ou = ouInstance.GetComponent<OuController>();
-            if (ou != null)
-            {
-                ou.Initialize(startPosition, direction, speedOu, lifeSpan);
-            }
-
-            nextAttackSpeed = Time.time + attackSpeed;
+            base.moveEnemy((gainaPosition - transform.position).normalized);
         }
     }
 
-    private void Patrol()
+    public void Patrol()
     {
         Vector3 direction = (targetPosition - transform.position).normalized;
         base.moveEnemy(direction);
@@ -84,10 +65,10 @@ public class GainaController : EnemyController
         float randomZ = Random.Range(-patrolAreaSize, patrolAreaSize);
         targetPosition = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
     }
-
+    
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Gaina"))
         {
             isPatrolling = true;
             setPatrolPoint();
