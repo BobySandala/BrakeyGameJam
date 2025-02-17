@@ -13,14 +13,14 @@ public class EnemyController : MonoBehaviour
     private BoxCollider boxCollider;
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         controller = GetComponent<CharacterController>();
         boxCollider = GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         if (!controller.isGrounded)
         {
@@ -35,12 +35,9 @@ public class EnemyController : MonoBehaviour
 
     }
 
-    private void FollowPlayer(Vector3 playerPosition)
+    public virtual void SeePlayer(Vector3 playerPosition)
     {
-        Vector3 direction = transform.position - playerPosition;
-        direction.y = 0;
-        print(direction.normalized);
-        controller.Move(direction.normalized * speed * Time.deltaTime);
+        
     }
 
     private void OnTriggerStay(Collider other)
@@ -48,7 +45,7 @@ public class EnemyController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             print("player in viziune");
-            FollowPlayer(other.transform.position);
+            SeePlayer(other.transform.position);
         }
     }
 
@@ -61,5 +58,12 @@ public class EnemyController : MonoBehaviour
             print("Lovitura");
         }
         
+    }
+
+    public void moveEnemy(Vector3 direction)
+    {
+        direction.y = 0f;
+        print(direction);
+        controller.Move(direction * speed * Time.deltaTime);
     }
 }
