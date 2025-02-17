@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,20 +6,17 @@ using UnityEngine;
 public class LupController : EnemyController
 {
     public float fugeLupu = 5f;
-    public float patrolAreaSize = 15f;
+
     public float patrolSpeed = 3f;
-    private Vector3 targetPosition;
+
     private bool isPatrolling = true;
-    
-    public float waitTime = 2f;
-    private float timer = 0f;
     
     // Start is called before the first frame update
     void Start()
     {
+        base.speed = fugeLupu;
         base.Start();
-        setPatrolPoint();
-        
+        base.setPatrolPoint();
     }
 
     // Update is called once per frame
@@ -28,7 +26,11 @@ public class LupController : EnemyController
 
         if (isPatrolling)
         {
-            Patrol();
+            base.speed = patrolSpeed;
+            base.Patrol();
+        } else
+        {
+            base.speed = fugeLupu;
         }
     }
 
@@ -42,36 +44,30 @@ public class LupController : EnemyController
             base.moveEnemy((gainaPosition - transform.position).normalized);
         }
     }
-
-    public void Patrol()
-    {
-        Vector3 direction = (targetPosition - transform.position).normalized;
-        base.moveEnemy(direction);
-
-        if (Vector3.Distance(transform.position, targetPosition) < 0.2f)
-        {
-            timer += Time.deltaTime;
-            if (timer >= waitTime)
-            {
-                setPatrolPoint();
-                timer = 0f;
-            }
-        }
-    }
-
-    public void setPatrolPoint()
-    {
-        float randomX = Random.Range(-patrolAreaSize, patrolAreaSize);
-        float randomZ = Random.Range(-patrolAreaSize, patrolAreaSize);
-        targetPosition = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-    }
     
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Gaina"))
+        if (other.CompareTag("Gaina") || other.CompareTag("Player"))
         {
             isPatrolling = true;
-            setPatrolPoint();
+            base.setPatrolPoint();
         }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player") || other.CompareTag("Gaina"))
+        {
+            //follow target
+            isPatrolling = false;
+            SeeTarget(other.transform.position);
+        }
+    }
+
+    private void SeeTarget(Vector3 targetPosition)
+    {
+        //float distance = Vector3.Distance(transform.position, targetPosition);
+        Vector3 direction = (targetPosition - transform.position).normalized;
+        base.moveEnemy(direction);
     }
 }

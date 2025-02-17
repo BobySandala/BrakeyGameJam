@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using TMPro;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -8,9 +9,14 @@ public class EnemyController : MonoBehaviour
     private CharacterController controller;
     private Vector3 velocity;
     public float gravity = 9.81f;
+    private float timer = 0f;
     public float speed = 4.0f;
+    public float patrolAreaSize = 15f;
+    public float waitTime = 2f;
 
     private BoxCollider boxCollider;
+
+    private Vector3 targetPosition;
 
     // Start is called before the first frame update
     protected void Start()
@@ -35,19 +41,7 @@ public class EnemyController : MonoBehaviour
 
     }
 
-    public virtual void SeePlayer(Vector3 playerPosition)
-    {
-        
-    }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            print("player in viziune");
-            SeePlayer(other.transform.position);
-        }
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -75,5 +69,31 @@ public class EnemyController : MonoBehaviour
         {
             Debug.LogError("No controller attached" + gameObject.name);
         }
+    }
+
+    public void Patrol()
+    {
+        Vector3 direction = (targetPosition - transform.position).normalized;
+        moveEnemy(direction);
+
+        Vector2 positionXZ = new Vector2(transform.position.x, transform.position.z);
+        Vector2 targetPosXZ = new Vector2(targetPosition.x, targetPosition.z);
+
+        if (Vector2.Distance(positionXZ, targetPosXZ) < 0.2f)
+        {
+            timer += Time.deltaTime;
+            if (timer >= waitTime)
+            {
+                setPatrolPoint();
+                timer = 0f;
+            }
+        }
+    }
+
+    public void setPatrolPoint()
+    {
+        float randomX = Random.Range(-patrolAreaSize, patrolAreaSize);
+        float randomZ = Random.Range(-patrolAreaSize, patrolAreaSize);
+        targetPosition = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
     }
 }

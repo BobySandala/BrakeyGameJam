@@ -579,7 +579,7 @@ GameObject:
   - component: {fileID: 535635876}
   m_Layer: 0
   m_Name: Lup
-  m_TagString: Untagged
+  m_TagString: Lup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -598,10 +598,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: 9.81
   speed: 4
-  fugeLupu: 5
   patrolAreaSize: 15
-  patrolSpeed: 3
   waitTime: 2
+  fugeLupu: 3
+  patrolSpeed: 3
 --- !u!4 &535635873
 Transform:
   m_ObjectHideFlags: 0
@@ -610,7 +610,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 535635871}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.227, y: 0.001, z: 3.15}
+  m_LocalPosition: {x: 1.62, y: 1.71, z: -2.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -629,7 +629,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
+  m_Height: 0.5
   m_Radius: 0.5
   m_SlopeLimit: 45.5
   m_StepOffset: 0.3
@@ -1416,7 +1416,7 @@ GameObject:
   - component: {fileID: 1398513282}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1591,7 +1591,7 @@ PrefabInstance:
     - target: {fileID: 8011985461157110725, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.12
+      value: -2.9
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110725, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
@@ -1643,6 +1643,21 @@ PrefabInstance:
       propertyPath: glont
       value: 
       objectReference: {fileID: 1605054667}
+    - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
+      propertyPath: fugeGaina
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
+      propertyPath: patrolSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
       propertyPath: patrolAreaSize

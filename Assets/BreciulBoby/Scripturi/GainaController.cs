@@ -11,19 +11,15 @@ public class GainaController : EnemyController
     public float attackSpeed = 1f;
     public float nextAttackSpeed = 0f;
 
-    public float patrolAreaSize = 25f;
     public float patrolSpeed = 3f;
-    private Vector3 targetPosition;
     private bool isPatrolling = true;
-    
-    public float waitTime = 2f;
-    private float timer = 0f;
     
     // Start is called before the first frame update
     void Start()
     {
+        base.patrolAreaSize = 25f;
         base.Start();
-        setPatrolPoint();
+        base.setPatrolPoint();
     }
 
     // Update is called once per frame
@@ -33,19 +29,25 @@ public class GainaController : EnemyController
 
         if (isPatrolling)
         {
-            Patrol();
+            base.speed = patrolSpeed;
+            base.Patrol();
+        } else
+        {
+            base.speed = fugeGaina;
         }
     }
     
-    public override void SeePlayer(Vector3 playerPosition)
+    public void SeePlayer(Vector3 playerPosition)
     {
-        base.SeePlayer(playerPosition);
         float distance = Vector3.Distance(transform.position, playerPosition);
         
         if (distance < fugeGaina)
         {
+            int range1 = -4;
+            int range2 = 4;
+            Vector3 rangomTweak = new Vector3(Random.Range(range1, range2), 0, Random.Range(range1, range2));
             isPatrolling = false;
-            base.moveEnemy(-(playerPosition - transform.position).normalized);
+            base.moveEnemy(-(playerPosition - transform.position + rangomTweak).normalized);
         }
         else if (Time.time >= nextAttackSpeed)
         {
@@ -62,35 +64,21 @@ public class GainaController : EnemyController
         }
     }
 
-    private void Patrol()
-    {
-        Vector3 direction = (targetPosition - transform.position).normalized;
-        base.moveEnemy(direction);
-
-        if (Vector3.Distance(transform.position, targetPosition) < 0.2f)
-        {
-            timer += Time.deltaTime;
-            if (timer >= waitTime)
-            {
-                setPatrolPoint();
-                timer = 0f;
-            }
-        }
-    }
-
-    public void setPatrolPoint()
-    {
-        float randomX = Random.Range(-patrolAreaSize, patrolAreaSize);
-        float randomZ = Random.Range(-patrolAreaSize, patrolAreaSize);
-        targetPosition = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-    }
-
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             isPatrolling = true;
-            setPatrolPoint();
+            base.setPatrolPoint();
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player") || other.CompareTag("Lup"))
+        {
+            print("player in viziune");
+            SeePlayer(other.transform.position);
         }
     }
 }
