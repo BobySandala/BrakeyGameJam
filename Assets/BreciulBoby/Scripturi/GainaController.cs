@@ -100,6 +100,7 @@ public class GainaController : EnemyController
             if (ou != null)
             {
                 ou.Initialize(startPosition, direction, speedOu, lifeSpan);
+                ou.transform.localScale = new Vector3(7f, 7f, 7f);
             }
 
             nextAttackSpeed = Time.time + attackSpeed;

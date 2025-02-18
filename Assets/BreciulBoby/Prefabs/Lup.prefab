@@ -49,12 +49,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: 18
   speed: 25
-  patrolAreaSize: 15
+  patrolAreaSize: 30
   waitTime: 2
   spriteRenderer: {fileID: 620841677777778420}
   viatza: 0
-  fugeLupu: 3
-  patrolSpeed: 25
+  fugeLupu: 25
+  patrolSpeed: 20
   gameManager: {fileID: 0}
 --- !u!143 &4615951621249992221
 CharacterController:
@@ -84,7 +84,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 10
+  m_Radius: 1
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
