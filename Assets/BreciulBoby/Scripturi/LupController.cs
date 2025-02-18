@@ -6,10 +6,9 @@ using UnityEngine;
 public class LupController : EnemyController
 {
     public float fugeLupu = 5f;
-
     public float patrolSpeed = 3f;
-
     private bool isPatrolling = true;
+    public GameManagerScript gameManager;
     
     // Start is called before the first frame update
     void Start()
@@ -17,6 +16,7 @@ public class LupController : EnemyController
         base.Start();
         base.setPatrolPoint();
         viatza = 20f;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
     }
 
     // Update is called once per frame
@@ -32,6 +32,11 @@ public class LupController : EnemyController
 
         if (viatza <= 0)
         {
+            if (gameManager != null)
+            {
+                gameManager.LupMort();
+            }
+            
             Destroy(this.gameObject);
         }
     }
@@ -66,10 +71,28 @@ public class LupController : EnemyController
         }
         else if (other.CompareTag("Ou"))
         {
-            float distantaOO = Vector3.Distance(transform.position, other.transform.position);
+            Vector2 positionXZ = new Vector2(transform.position.x, transform.position.z);
+            Vector2 targetPosXZ = new Vector2(other.transform.position.x, other.transform.position.z);
+            float distantaOO = Vector2.Distance(positionXZ, targetPosXZ);
             if (distantaOO < 1.5f)
             {
                 Destroy(other.gameObject);
+                viatza -= 5f;
+                print("am looveet lupuy");
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Armament"))
+        {
+            Vector2 positionXZ = new Vector2(transform.position.x, transform.position.z);
+            Vector2 targetPosXZ = new Vector2(other.transform.position.x, other.transform.position.z);
+            float distantaOO = Vector2.Distance(positionXZ, targetPosXZ);
+            print(distantaOO);
+            if (distantaOO < 7f)
+            {
                 viatza -= 10f;
                 print("am looveet lupuy");
             }

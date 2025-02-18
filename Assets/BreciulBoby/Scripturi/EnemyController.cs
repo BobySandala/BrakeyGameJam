@@ -17,6 +17,8 @@ public class EnemyController : MonoBehaviour
     private BoxCollider boxCollider;
 
     private Vector3 targetPosition;
+    
+    public SpriteRenderer spriteRenderer;
 
     [SerializeField]
     protected float viatza;
@@ -41,11 +43,9 @@ public class EnemyController : MonoBehaviour
         }
         controller.Move(velocity * Time.deltaTime);
 
-
+        
     }
-
-
-
+    
     private void OnTriggerEnter(Collider other)
     {
         
@@ -71,6 +71,15 @@ public class EnemyController : MonoBehaviour
         else
         {
             Debug.LogError("No controller attached" + gameObject.name);
+        }
+
+        if (direction.x > 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
         }
     }
 

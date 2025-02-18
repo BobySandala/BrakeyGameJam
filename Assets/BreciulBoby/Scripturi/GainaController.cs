@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GainaController : EnemyController
@@ -13,7 +14,11 @@ public class GainaController : EnemyController
 
     public float patrolSpeed = 3f;
     private bool isPatrolling = true;
-    private float attackRadiusLup = 1.5f;
+    private float attackRadiusLup = 6.5f;
+    public GameManagerScript gameManager;
+    public bool isInfected = false;
+    public Sprite gainaNormala;
+    public Sprite gainaNebuna;
     
     // Start is called before the first frame update
     void Start()
@@ -22,6 +27,17 @@ public class GainaController : EnemyController
         base.Start();
         base.setPatrolPoint();
         viatza = 10f;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
+
+        if (gameManager != null)
+        {
+            //gameManager.adaugareGaina(this);
+        }
+
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.sprite = gainaNormala;
+        }
     }
 
     // Update is called once per frame
@@ -34,26 +50,48 @@ public class GainaController : EnemyController
             base.speed = patrolSpeed;
             base.Patrol();
         }
+        
+        spriteRenderer.sprite = (isInfected) ? gainaNebuna : gainaNormala;
+    }
+
+    public void iaSalmonela()
+    {
+        isInfected = true;
+        Debug.Log("gaina a luat salmonela!!!");
+        this.patrolSpeed = 3.5f;
+
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.sprite = gainaNebuna;
+        }
     }
     
     public void SeePlayer(Vector3 playerPosition, string playerTag)
     {
-        float distance = Vector3.Distance(transform.position, playerPosition);
+        Vector2 positionXZ = new Vector2(transform.position.x, transform.position.z);
+        Vector2 targetPosXZ = new Vector2(playerPosition.x, playerPosition.z);
+        
+        float distance = Vector2.Distance(positionXZ, targetPosXZ);
 
         if (distance < attackRadiusLup && (playerTag == "Lup" || playerTag == "Armament"))
         {
+            /*if (gameManager != null)
+            {
+                gameManager.GainaMoarta();
+            }*/
+            
             Destroy(gameObject);
         }
         
         if (distance < fugeGaina)
         {
-            int range1 = -4;
-            int range2 = 4;
-            Vector3 rangomTweak = new Vector3(Random.Range(range1, range2), 0, Random.Range(range1, range2));
+            //int range1 = -4;
+            //int range2 = 4;
+            //Vector3 rangomTweak = new Vector3(Random.Range(range1, range2), 0, Random.Range(range1, range2));
             isPatrolling = false;
-            base.moveEnemy(-(playerPosition - transform.position + rangomTweak).normalized);
+            base.moveEnemy(-(playerPosition - transform.position/* + rangomTweak*/).normalized);
         }
-        else if (Time.time >= nextAttackSpeed)
+        else if (Time.time >= nextAttackSpeed && isInfected)
         {
             Vector3 direction = (playerPosition - transform.position).normalized;
             Vector3 startPosition = transform.position;
@@ -79,12 +117,36 @@ public class GainaController : EnemyController
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Lup") || other.CompareTag("Armament"))
+        if (other.CompareTag("Player") || other.CompareTag("Lup"))
         {
-            print("player in viziune");
+            //print("player in viziune");
             SeePlayer(other.transform.position, other.tag);
         }
-        
-        
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Armament"))
+        {
+            Vector2 positionXZ = new Vector2(transform.position.x, transform.position.z);
+            Vector2 targetPosXZ = new Vector2(other.transform.position.x, other.transform.position.z);
+            float distance = Vector2.Distance(positionXZ, targetPosXZ);
+            print("distanta gaina " + distance);
+            if (distance < 6.5f)
+            {
+                if (isInfected)
+                {
+                    isInfected = false;
+                    gameManager.InfecteazaGainaRendam();
+                    gameManager.InfecteazaGainaRendam();
+                    spriteRenderer.sprite = gainaNormala;
+                }
+                else
+                {
+                    Object.Destroy(gameObject);
+                }
+            }
+        }
+    }
+    
 }
