@@ -13,6 +13,7 @@ public class GainaController : EnemyController
 
     public float patrolSpeed = 3f;
     private bool isPatrolling = true;
+    private float attackRadiusLup = 1.5f;
     
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class GainaController : EnemyController
         base.patrolAreaSize = 25f;
         base.Start();
         base.setPatrolPoint();
+        viatza = 10f;
     }
 
     // Update is called once per frame
@@ -31,15 +33,17 @@ public class GainaController : EnemyController
         {
             base.speed = patrolSpeed;
             base.Patrol();
-        } else
-        {
-            base.speed = fugeGaina;
         }
     }
     
-    public void SeePlayer(Vector3 playerPosition)
+    public void SeePlayer(Vector3 playerPosition, string playerTag)
     {
         float distance = Vector3.Distance(transform.position, playerPosition);
+
+        if (distance < attackRadiusLup && (playerTag == "Lup" || playerTag == "Armament"))
+        {
+            Destroy(gameObject);
+        }
         
         if (distance < fugeGaina)
         {
@@ -75,10 +79,12 @@ public class GainaController : EnemyController
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Lup"))
+        if (other.CompareTag("Player") || other.CompareTag("Lup") || other.CompareTag("Armament"))
         {
             print("player in viziune");
-            SeePlayer(other.transform.position);
+            SeePlayer(other.transform.position, other.tag);
         }
+        
+        
     }
 }

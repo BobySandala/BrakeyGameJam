@@ -18,6 +18,9 @@ public class EnemyController : MonoBehaviour
 
     private Vector3 targetPosition;
 
+    [SerializeField]
+    protected float viatza;
+
     // Start is called before the first frame update
     protected void Start()
     {

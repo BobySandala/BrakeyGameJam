@@ -14,9 +14,9 @@ public class LupController : EnemyController
     // Start is called before the first frame update
     void Start()
     {
-        base.speed = fugeLupu;
         base.Start();
         base.setPatrolPoint();
+        viatza = 20f;
     }
 
     // Update is called once per frame
@@ -28,9 +28,11 @@ public class LupController : EnemyController
         {
             base.speed = patrolSpeed;
             base.Patrol();
-        } else
+        }
+
+        if (viatza <= 0)
         {
-            base.speed = fugeLupu;
+            Destroy(this.gameObject);
         }
     }
 
@@ -61,6 +63,16 @@ public class LupController : EnemyController
             //follow target
             isPatrolling = false;
             SeeTarget(other.transform.position);
+        }
+        else if (other.CompareTag("Ou"))
+        {
+            float distantaOO = Vector3.Distance(transform.position, other.transform.position);
+            if (distantaOO < 1.5f)
+            {
+                Destroy(other.gameObject);
+                viatza -= 10f;
+                print("am looveet lupuy");
+            }
         }
     }
 
