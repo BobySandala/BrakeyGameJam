@@ -19,7 +19,7 @@ public class GameManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        guiCanvas.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -27,8 +27,11 @@ public class GameManagerScript : MonoBehaviour
     {
         if (Input.GetKeyDown(anfriz))
         {
-            Time.timeScale = 1;
-            guiCanvas.SetActive(false);
+            if (guiCanvas.GetComponent<UI_Controller_LV1>().TaceSlapnut())
+            {
+                Time.timeScale = 1;
+                guiCanvas.GetComponent<UI_Controller_LV1>().NextPhase();
+            }
         }
         
         //cautaGaini();
@@ -56,16 +59,8 @@ public class GameManagerScript : MonoBehaviour
         if (lupiMorti == 2)
         {
             InfecteazaGainaRendam();
-            ToggleCanvas();
+            guiCanvas.GetComponent<UI_Controller_LV1>().NextPhase();
             Time.timeScale = 0;
-        }
-    }
-    
-    void ToggleCanvas()
-    {
-        if (guiCanvas != null)
-        {
-            guiCanvas.SetActive(!guiCanvas.activeSelf);
         }
     }
     

@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a2541b44932054ebfb2cacd8a2ca09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guiCanvas: {fileID: 0}
+  guiCanvas: {fileID: 3792264528609308829, guid: b3563c9b2114bd644a37cdb9c7e0502e,
+    type: 3}
   gainiMoarte: 0
   lupiMorti: 0
   anfriz: 9
