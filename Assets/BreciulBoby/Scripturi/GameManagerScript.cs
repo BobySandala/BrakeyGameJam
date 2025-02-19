@@ -30,6 +30,7 @@ public class GameManagerScript : MonoBehaviour
             if (guiCanvas.GetComponent<UI_Controller_LV1>().TaceSlapnut())
             {
                 Time.timeScale = 1;
+                InfecteazaGainaRendam();
                 guiCanvas.GetComponent<UI_Controller_LV1>().NextPhase();
             }
         }
@@ -43,24 +44,24 @@ public class GameManagerScript : MonoBehaviour
         print(gaini.Length);
     }
 
-    /*public void GainaMoarta()
+    public void playerDamage()
     {
-        gainiMoarte++;
-        if (gainiMoarte == 3)
-        {
-            ToggleCanvas();
-            Time.timeScale = 0;
-        }
-    }*/
+        guiCanvas.GetComponent<UI_Controller_LV1>().InimaDied();
+    }
+
+    public void GainaMoarta()
+    {
+        guiCanvas.GetComponent<UI_Controller_LV1>().GainaDied();
+    }
 
     public void LupMort()
     {
         lupiMorti++;
-        if (lupiMorti == 2)
+        guiCanvas.GetComponent<UI_Controller_LV1>().LupDied();
+        if (lupiMorti == 3)
         {
-            InfecteazaGainaRendam();
             guiCanvas.GetComponent<UI_Controller_LV1>().NextPhase();
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
         }
     }
     

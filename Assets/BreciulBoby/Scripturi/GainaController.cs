@@ -75,10 +75,10 @@ public class GainaController : EnemyController
 
         if (distance < attackRadiusLup && (playerTag == "Lup" || playerTag == "Armament"))
         {
-            /*if (gameManager != null)
+            if (gameManager != null)
             {
                 gameManager.GainaMoarta();
-            }*/
+            }
             
             Destroy(gameObject);
         }

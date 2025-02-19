@@ -45,7 +45,7 @@ public class UI_Controller_LV1 : MonoBehaviour
 
     public void NextPhase()
     {
-        print(current_phase);
+        print("current phase" + current_phase);
         SetAllActive(false);
         current_phase++;
 
@@ -56,6 +56,7 @@ public class UI_Controller_LV1 : MonoBehaviour
                 break;
             case 1:
                 ph_2.SetActive(true);
+                phase_2.AFostSetatActiv();
                 break;
             case 2:
                 ph_3.SetActive(true);
@@ -70,6 +71,7 @@ public class UI_Controller_LV1 : MonoBehaviour
         gameOver = true;
         SetAllActive(false);
         GameOverPhase.SetActive(true);
+        phase_GO.AFostSetatActiv();
     }
 
     public void GamePassed() 
@@ -77,6 +79,7 @@ public class UI_Controller_LV1 : MonoBehaviour
         gamePassed = true; 
         SetAllActive(false);
         GamePassedPhase.SetActive(true);
+        phase_GP.AFostSetatActiv();
     }
 
     private void HandlePh_1()
@@ -133,6 +136,11 @@ public class UI_Controller_LV1 : MonoBehaviour
             //NextPhase();
             //GameOver();
             GamePassed();
+        }
+
+        if (Input.GetKeyUp(KeyCode.G))
+        {
+            InimaDied();
         }
 
         switch (current_phase)

@@ -17,6 +17,8 @@ public class MovementController : MonoBehaviour
     private KeyCode lastPressedKey;
     public float SwooshOnTime = 0.2f;
 
+    public GameManagerScript gameManager;
+
     private bool CanAttack = true;
 
     // 0 - Left; 1 - Right; 2 - Fwd; 3 - Bwd
@@ -62,6 +64,23 @@ public class MovementController : MonoBehaviour
         }
 
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Lup") || other.CompareTag("Ou"))
+        {
+            Vector2 positionXZ = new Vector2(transform.position.x, transform.position.z);
+            Vector2 targetPosXZ = new Vector2(other.transform.position.x, other.transform.position.z);
+            float distance = Vector2.Distance(positionXZ, targetPosXZ);
+
+            print("distanta player pu lup:" + distance);
+            if (distance < 17f)
+            {
+                //incaseaza dmg
+                gameManager.playerDamage();
+            }
+        }
     }
 
     void Attack()

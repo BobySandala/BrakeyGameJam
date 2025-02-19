@@ -10,13 +10,19 @@ public class phase_2_UI : MonoBehaviour
 
     private string pressSpaceText;
     private bool spacePressed;
-    public float pause = 0.1f;
     public string[] messages;
     private int current_message;
     public TextMeshProUGUI guiText;
     private bool writing_message = false;
     public bool taceSlapnut = false;
 
+    private int current_letter = 0;
+    private string fullMessage;
+
+    private float timer;
+    private int letterIndex;
+    public float pause = 0.1f;
+    private float nextLetterTime = 0f;
     void Start()
     {
         spacePressed = false;
@@ -24,37 +30,68 @@ public class phase_2_UI : MonoBehaviour
         //message = guiText.text;
         current_message = 0;
         guiText.text = ""; // Clear the GUI text
-        StartCoroutine(TypeLetters());
+        //StartCoroutine(TypeLetters());
+        //ScriemLitere();
     }
 
-    IEnumerator TypeLetters()
+    public void AFostSetatActiv()
+    {
+        print("a fost setat activ");
+        //StartCoroutine(TypeLetters());
+        StartTyping();
+    }
+
+    public void StartTyping()
+    {
+        if (messages.Length == 0 || current_message >= messages.Length) return;
+
+        fullMessage = messages[current_message];
+        guiText.text = "";
+        letterIndex = 0;
+        writing_message = true;
+    }
+
+    private IEnumerator TypeLetters()
     {
         writing_message = true;
 
-        // Ensure the current message is valid
+        // Validate messages array and index
         if (messages == null || messages.Length == 0 || current_message >= messages.Length)
         {
-            yield break; // Exit if messages array is empty or invalid
+            Debug.LogError("Invalid messages array or index out of bounds!");
+            yield break;
         }
 
-        string currentText = messages[current_message]; // Get the full message
-        print(currentText); // Print the entire message
-
-        // Clear the text before typing
-        guiText.text = "";
-
-        // Iterate over each letter
-        foreach (char letter in currentText)
+        // Ensure guiText is assigned
+        if (guiText == null)
         {
-            print(letter); // Print each letter
-            guiText.text += letter; // Add a single character to the GUI text
-
-            yield return new WaitForSeconds(pause); // Wait before the next letter
+            Debug.LogError("guiText is not assigned!");
+            yield break;
         }
 
+        // Ensure pause is valid
+        if (pause <= 0)
+        {
+            Debug.LogError("Pause time must be greater than zero!");
+            yield break;
+        }
+
+        string fullMessage = messages[current_message];
+        guiText.text = ""; // Clear previous text
+
+        Debug.Log($"Starting to type message: {fullMessage}");
+
+        // Iterate over each letter and display it one by one
+        foreach (char letter in fullMessage)
+        {
+            Debug.Log($"Typing letter: {letter}");
+            guiText.text += letter;
+        }
+            yield return new WaitForSeconds(pause);
+
+        Debug.Log("Finished typing message.");
         writing_message = false;
     }
-
 
     void NextMessage()
     {
@@ -65,7 +102,8 @@ public class phase_2_UI : MonoBehaviour
             return;
         }
         guiText.text = "";
-        StartCoroutine(TypeLetters());
+        //StartCoroutine(TypeLetters());
+        StartTyping();
     }
 
     void DialogueEnding()
@@ -76,7 +114,9 @@ public class phase_2_UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //print("cox");
         PressSpace.text = pressSpaceText;
+
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -110,6 +150,24 @@ public class phase_2_UI : MonoBehaviour
                 } else
                 {
                     DialogueEnding();
+                }
+            }
+        }
+
+        if (writing_message)
+        {
+            timer += Time.deltaTime;
+            if (timer >= pause)
+            {
+                timer = 0;
+                if (letterIndex < fullMessage.Length)
+                {
+                    guiText.text += fullMessage[letterIndex];
+                    letterIndex++;
+                }
+                else
+                {
+                    writing_message = false; // Typing finished
                 }
             }
         }
