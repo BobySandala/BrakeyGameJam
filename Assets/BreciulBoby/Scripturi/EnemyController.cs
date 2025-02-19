@@ -6,6 +6,11 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public float boxBounds_X1;
+    public float boxBounds_X2;
+    public float boxBounds_Z1;
+    public float boxBounds_Z2;
+
     private CharacterController controller;
     private Vector3 velocity;
     public float gravity = 9.81f;
@@ -16,6 +21,7 @@ public class EnemyController : MonoBehaviour
 
     private BoxCollider boxCollider;
 
+    [SerializeField]
     private Vector3 targetPosition;
     
     public SpriteRenderer spriteRenderer;
@@ -83,6 +89,8 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+
+
     public void Patrol()
     {
         Vector3 direction = (targetPosition - transform.position).normalized;
@@ -96,7 +104,7 @@ public class EnemyController : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= waitTime)
             {
-                setPatrolPoint();
+                setPatrolPointInRange();
                 timer = 0f;
             }
         }
@@ -107,5 +115,17 @@ public class EnemyController : MonoBehaviour
         float randomX = Random.Range(-patrolAreaSize, patrolAreaSize);
         float randomZ = Random.Range(-patrolAreaSize, patrolAreaSize);
         targetPosition = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+    }
+
+    public void setPatrolPointInRange()
+    {
+        float randomX = Random.Range(boxBounds_X1, boxBounds_X2);
+        float randomZ = Random.Range(boxBounds_Z1, boxBounds_Z2);
+        targetPosition = new Vector3(randomX, transform.position.y, randomZ);
+    }
+
+    public void reversePatrolPoint()
+    {
+        targetPosition *= -1;
     }
 }

@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6231470792716125782
 RectTransform:
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5200106558088024110
 RectTransform:
   m_ObjectHideFlags: 0
@@ -256,8 +256,27 @@ MonoBehaviour:
   - {fileID: 9033781035870045979}
   - {fileID: 5968766558224343788}
   - {fileID: 9211095326365142985}
-  alive: []
-  ded: []
+  alive:
+  - {fileID: 770318658, guid: 711fca838310a1a4b9219ac9e3119a1e, type: 3}
+  - {fileID: 886098667, guid: 711fca838310a1a4b9219ac9e3119a1e, type: 3}
+  - {fileID: -678053328, guid: 711fca838310a1a4b9219ac9e3119a1e, type: 3}
+  - {fileID: 164774446, guid: 711fca838310a1a4b9219ac9e3119a1e, type: 3}
+  - {fileID: 1448364224, guid: 711fca838310a1a4b9219ac9e3119a1e, type: 3}
+  - {fileID: -1068521922, guid: 711fca838310a1a4b9219ac9e3119a1e, type: 3}
+  - {fileID: 567362565, guid: 711fca838310a1a4b9219ac9e3119a1e, type: 3}
+  - {fileID: 724850566, guid: 711fca838310a1a4b9219ac9e3119a1e, type: 3}
+  - {fileID: -2129591672, guid: 711fca838310a1a4b9219ac9e3119a1e, type: 3}
+  - {fileID: -548833163, guid: 711fca838310a1a4b9219ac9e3119a1e, type: 3}
+  - {fileID: 1436880567, guid: 711fca838310a1a4b9219ac9e3119a1e, type: 3}
+  - {fileID: 1544281127, guid: 711fca838310a1a4b9219ac9e3119a1e, type: 3}
+  - {fileID: 278896810, guid: 711fca838310a1a4b9219ac9e3119a1e, type: 3}
+  ded:
+  - {fileID: -1628533677, guid: 08e4f7aa006fbc545af55c66d18c7f74, type: 3}
+  - {fileID: -334538353, guid: 08e4f7aa006fbc545af55c66d18c7f74, type: 3}
+  - {fileID: -174082731, guid: 08e4f7aa006fbc545af55c66d18c7f74, type: 3}
+  - {fileID: -1932002030, guid: 08e4f7aa006fbc545af55c66d18c7f74, type: 3}
+  - {fileID: -1985762717, guid: 08e4f7aa006fbc545af55c66d18c7f74, type: 3}
+  - {fileID: 1282685259, guid: 08e4f7aa006fbc545af55c66d18c7f74, type: 3}
 --- !u!1 &1115327191780938129
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,7 +601,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -1046, y: 750}
-  m_SizeDelta: {x: 620, y: 540}
+  m_SizeDelta: {x: 740, y: 620}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1424267841000434296
 CanvasRenderer:
@@ -612,7 +631,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: cb0f0a0253d424b49b2fc7e3b3859145, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -814,7 +833,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 35.59668, z: 0, w: 132.46875}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2437,7 +2456,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -1046, y: 750}
-  m_SizeDelta: {x: 620, y: 540}
+  m_SizeDelta: {x: 720, y: 620}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4833639623935248714
 CanvasRenderer:
@@ -2467,7 +2486,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: cb0f0a0253d424b49b2fc7e3b3859145, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2537,8 +2556,10 @@ MonoBehaviour:
   - {fileID: 9062454721603439613}
   - {fileID: 2171250444020723097}
   - {fileID: 5997259252464254558}
-  alive: []
-  ded: []
+  alive:
+  - {fileID: 21300000, guid: 9d42993ddb9fb9840884332bc9fa874b, type: 3}
+  ded:
+  - {fileID: 21300000, guid: e285804c8429e064da628bd747b6af02, type: 3}
 --- !u!1 &4593372672717468466
 GameObject:
   m_ObjectHideFlags: 0
@@ -3207,7 +3228,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5115219566741160298
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3452,7 +3473,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 17.795914, z: 0, w: 116.64583}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3590,5 +3611,7 @@ MonoBehaviour:
   - {fileID: 6574345364400913544}
   - {fileID: 5584577154395014516}
   - {fileID: 5934530438518313205}
-  alive: []
-  ded: []
+  alive:
+  - {fileID: 21300000, guid: 9dcc0b833392bd143841ca0d5b73b33c, type: 3}
+  ded:
+  - {fileID: 21300000, guid: 0f2ffa37a85f10b4784a85cbc38a920d, type: 3}

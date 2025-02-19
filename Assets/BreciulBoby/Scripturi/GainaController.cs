@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class GainaController : EnemyController
 {
+    private int capDePerete = 0;
+    
     public float fugeGaina = 5f;
     public GameObject glont;
     public float speedOu = 5f;
@@ -19,18 +21,21 @@ public class GainaController : EnemyController
     public bool isInfected = false;
     public Sprite gainaNormala;
     public Sprite gainaNebuna;
+
     
+
     // Start is called before the first frame update
     void Start()
     {
         base.patrolAreaSize = 25f;
         base.Start();
-        base.setPatrolPoint();
+        base.setPatrolPointInRange();
         viatza = 10f;
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
+
 
         if (gameManager != null)
         {
+            gameManager = GameObject.Find("GameManager").GetComponent<GameManagerScript>();
             //gameManager.adaugareGaina(this);
         }
 
@@ -52,6 +57,12 @@ public class GainaController : EnemyController
         }
         
         spriteRenderer.sprite = (isInfected) ? gainaNebuna : gainaNormala;
+
+        if (capDePerete != 0)
+        {
+            print("gaina a dat cu capul de perete");
+            //base.reversePatrolPoint();
+        }
     }
 
     public void iaSalmonela()
@@ -112,7 +123,12 @@ public class GainaController : EnemyController
         if (other.CompareTag("Player"))
         {
             isPatrolling = true;
-            base.setPatrolPoint();
+            base.setPatrolPointInRange();
+        }
+
+        if (other.CompareTag("Wall"))
+        {
+            capDePerete--;
         }
     }
 
@@ -147,6 +163,11 @@ public class GainaController : EnemyController
                     Object.Destroy(gameObject);
                 }
             }
+        }
+        if (other.CompareTag("Wall"))
+        {
+            capDePerete++;
+            base.setPatrolPointInRange();
         }
     }
     
