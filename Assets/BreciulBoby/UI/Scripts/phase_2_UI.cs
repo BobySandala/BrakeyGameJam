@@ -25,6 +25,7 @@ public class phase_2_UI : MonoBehaviour
     private float nextLetterTime = 0f;
     void Start()
     {
+        Debug.Log("Start called on " + gameObject.name);
         spacePressed = false;
         PressSpace.text = "";
         //message = guiText.text;
@@ -111,10 +112,17 @@ public class phase_2_UI : MonoBehaviour
 
     }
 
+    void Awake() { Debug.Log("Awake called on " + gameObject.name); }
+    //void Start() { Debug.Log("Start called on " + gameObject.name); }
+    void OnEnable() { Debug.Log("OnEnable called on " + gameObject.name); }
+
+
     // Update is called once per frame
     void Update()
     {
-        //print("cox");
+
+        print("coxare maxima");
+        
         PressSpace.text = pressSpaceText;
 
 

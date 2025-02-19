@@ -45,6 +45,7 @@ public class UI_Controller_LV1 : MonoBehaviour
 
     public void NextPhase()
     {
+        if (gameOver || gamePassed) return;
         print("current phase" + current_phase);
         SetAllActive(false);
         current_phase++;
@@ -68,14 +69,18 @@ public class UI_Controller_LV1 : MonoBehaviour
 
     public void GameOver()
     {
+        if (gameOver) return;
         gameOver = true;
         SetAllActive(false);
         GameOverPhase.SetActive(true);
+        GameOverPhase.GetComponent<phase_2_UI>().enabled = true;
+        //myObject.GetComponent<MyScript>().enabled = true;
         phase_GO.AFostSetatActiv();
     }
 
     public void GamePassed() 
     {
+        if(gamePassed) return;
         gamePassed = true; 
         SetAllActive(false);
         GamePassedPhase.SetActive(true);
@@ -104,7 +109,7 @@ public class UI_Controller_LV1 : MonoBehaviour
 
     private void HandleGamePassed_Ph()
     {
-
+        
     }
 
     public void LupDied()
@@ -130,18 +135,6 @@ public class UI_Controller_LV1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.E))
-        {
-            //LupDied();
-            //NextPhase();
-            //GameOver();
-            GamePassed();
-        }
-
-        if (Input.GetKeyUp(KeyCode.G))
-        {
-            InimaDied();
-        }
 
         switch (current_phase)
         {
@@ -177,11 +170,11 @@ public class UI_Controller_LV1 : MonoBehaviour
         }
         else if (gameOver)
         {
-            return phase_2.taceSlapnut;
+            return phase_GO.taceSlapnut;
         }
         else if (gamePassed)
         {
-            return phase_2.taceSlapnut;
+            return phase_GP.taceSlapnut;
         }
         return taceSlapnut;
     }

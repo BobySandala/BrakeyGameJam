@@ -15,7 +15,8 @@ public class GainaController : EnemyController
     public float nextAttackSpeed = 0f;
 
     public float patrolSpeed = 3f;
-    public float fujeSpeed = 4f;
+    public float fujeSpeed = 30f;
+    [SerializeField]
     private bool isPatrolling = true;
     private float attackRadiusLup = 6.5f;
     public GameManagerScript gameManager;
@@ -96,7 +97,8 @@ public class GainaController : EnemyController
             
             Destroy(gameObject);
         }
-        
+        print("distanta: " + distance);
+        isPatrolling = true;
         if (distance < fugeGaina)
         {
             //int range1 = -4;
@@ -104,6 +106,7 @@ public class GainaController : EnemyController
             //Vector3 rangomTweak = new Vector3(Random.Range(range1, range2), 0, Random.Range(range1, range2));
             isPatrolling = false;
             base.moveEnemy(-(playerPosition - transform.position/* + rangomTweak*/).normalized);
+            print("fuge gaina");
         }
         else if (Time.time >= nextAttackSpeed && isInfected)
         {
@@ -139,7 +142,7 @@ public class GainaController : EnemyController
     {
         if (other.CompareTag("Player") || other.CompareTag("Lup"))
         {
-            //print("player in viziune");
+            
             SeePlayer(other.transform.position, other.tag);
         }
     }
@@ -160,9 +163,11 @@ public class GainaController : EnemyController
                     gameManager.InfecteazaGainaRendam();
                     gameManager.InfecteazaGainaRendam();
                     spriteRenderer.sprite = gainaNormala;
+                    gameManager.MuceaLovit();
                 }
                 else
                 {
+
                     Object.Destroy(gameObject);
                 }
             }

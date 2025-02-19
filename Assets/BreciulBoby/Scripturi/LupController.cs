@@ -48,6 +48,7 @@ public class LupController : EnemyController
         if (distance < 1f)
         {
             isPatrolling = false;
+            base.speed = fugeLupu;
             base.moveEnemy((gainaPosition - transform.position).normalized);
         }
     }
@@ -91,7 +92,7 @@ public class LupController : EnemyController
             Vector2 targetPosXZ = new Vector2(other.transform.position.x, other.transform.position.z);
             float distantaOO = Vector2.Distance(positionXZ, targetPosXZ);
             print(distantaOO);
-            if (distantaOO < 7f)
+            if (distantaOO < 12f)
             {
                 viatza -= 10f;
                 print("am looveet lupuy");

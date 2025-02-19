@@ -1367,7 +1367,7 @@ PrefabInstance:
     - target: {fileID: 8011985461157110725, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.51
+      value: 58.5
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110725, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
@@ -1423,6 +1423,16 @@ PrefabInstance:
         type: 3}
       propertyPath: speed
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
+      propertyPath: fugeGaina
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
+      propertyPath: fujeSpeed
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
@@ -9348,6 +9358,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 466679827615009546, guid: b3563c9b2114bd644a37cdb9c7e0502e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1424267841070043221, guid: b3563c9b2114bd644a37cdb9c7e0502e,
+        type: 3}
+      propertyPath: messages.Array.data[0]
+      value: noooo
+      objectReference: {fileID: 0}
+    - target: {fileID: 1424267841070043221, guid: b3563c9b2114bd644a37cdb9c7e0502e,
+        type: 3}
+      propertyPath: messages.Array.data[1]
+      value: you defeated the crazy chickens
+      objectReference: {fileID: 0}
+    - target: {fileID: 1424267841070043221, guid: b3563c9b2114bd644a37cdb9c7e0502e,
+        type: 3}
+      propertyPath: messages.Array.data[2]
+      value: you are to strong
+      objectReference: {fileID: 0}
+    - target: {fileID: 1424267841070043221, guid: b3563c9b2114bd644a37cdb9c7e0502e,
+        type: 3}
+      propertyPath: messages.Array.data[3]
+      value: have nice day
+      objectReference: {fileID: 0}
     - target: {fileID: 3792264528609308825, guid: b3563c9b2114bd644a37cdb9c7e0502e,
         type: 3}
       propertyPath: m_Pivot.x
@@ -9458,10 +9493,35 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4330371310282435085, guid: b3563c9b2114bd644a37cdb9c7e0502e,
+        type: 3}
+      propertyPath: messages.Array.data[0]
+      value: hahaha, womp womp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330371310282435085, guid: b3563c9b2114bd644a37cdb9c7e0502e,
+        type: 3}
+      propertyPath: messages.Array.data[1]
+      value: womp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330371310282435085, guid: b3563c9b2114bd644a37cdb9c7e0502e,
+        type: 3}
+      propertyPath: messages.Array.data[2]
+      value: womp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4330371310282435085, guid: b3563c9b2114bd644a37cdb9c7e0502e,
+        type: 3}
+      propertyPath: messages.Array.data[3]
+      value: git gud
+      objectReference: {fileID: 0}
     - target: {fileID: 7275366827642100592, guid: b3563c9b2114bd644a37cdb9c7e0502e,
         type: 3}
       propertyPath: messages.Array.data[0]
       value: nenorocitule
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398263325495708691, guid: b3563c9b2114bd644a37cdb9c7e0502e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3563c9b2114bd644a37cdb9c7e0502e, type: 3}
@@ -9475,7 +9535,7 @@ PrefabInstance:
     - target: {fileID: 8011985461157110725, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 26
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110725, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
@@ -9554,6 +9614,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
+      propertyPath: fugeGaina
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
+      propertyPath: fujeSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 510277814}
@@ -9581,6 +9651,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gaina (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110776, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110776, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
@@ -11535,7 +11610,7 @@ PrefabInstance:
     - target: {fileID: 8011985461157110725, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110725, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
@@ -11614,6 +11689,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
+      propertyPath: fugeGaina
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
+      propertyPath: fujeSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 510277814}
@@ -11641,6 +11726,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gaina (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110776, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110776, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
@@ -17521,7 +17611,7 @@ PrefabInstance:
     - target: {fileID: 8011985461157110725, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110725, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
@@ -17600,6 +17690,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
+      propertyPath: fugeGaina
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
+      propertyPath: fujeSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 510277814}
@@ -17627,6 +17727,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gaina (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110776, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110776, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
@@ -18285,7 +18390,7 @@ PrefabInstance:
     - target: {fileID: 8011985461157110725, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110725, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
@@ -18364,6 +18469,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
+      propertyPath: fugeGaina
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
+      propertyPath: fujeSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 510277814}
@@ -18391,6 +18506,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gaina (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110776, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110776, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
@@ -21287,7 +21407,7 @@ PrefabInstance:
     - target: {fileID: 8011985461157110725, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110725, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
@@ -21366,6 +21486,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
+      propertyPath: fugeGaina
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
+      propertyPath: fujeSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 510277814}
@@ -21393,6 +21523,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gaina (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110776, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110776, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
@@ -23635,9 +23770,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6479842626824878681, guid: e53c03e0bf4a44b4faa253fa5b614293,
         type: 3}
+      propertyPath: attackKey
+      value: 323
+      objectReference: {fileID: 0}
+    - target: {fileID: 6479842626824878681, guid: e53c03e0bf4a44b4faa253fa5b614293,
+        type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 510277814}
+    - target: {fileID: 6479842626824878681, guid: e53c03e0bf4a44b4faa253fa5b614293,
+        type: 3}
+      propertyPath: lupAttackDelay
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 6479842626824878756, guid: e53c03e0bf4a44b4faa253fa5b614293,
         type: 3}
       propertyPath: m_RootOrder
@@ -23661,7 +23806,7 @@ PrefabInstance:
     - target: {fileID: 6479842626824878756, guid: e53c03e0bf4a44b4faa253fa5b614293,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -81.1
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: 6479842626824878756, guid: e53c03e0bf4a44b4faa253fa5b614293,
         type: 3}
@@ -23671,7 +23816,7 @@ PrefabInstance:
     - target: {fileID: 6479842626824878756, guid: e53c03e0bf4a44b4faa253fa5b614293,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.313408
+      value: -79
       objectReference: {fileID: 0}
     - target: {fileID: 6479842626824878756, guid: e53c03e0bf4a44b4faa253fa5b614293,
         type: 3}
@@ -24155,110 +24300,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 896405635}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1018072471
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4615951621249992222, guid: f01bafc69ac567b4a8eb878abb032cc7,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615951621249992222, guid: f01bafc69ac567b4a8eb878abb032cc7,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615951621249992222, guid: f01bafc69ac567b4a8eb878abb032cc7,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615951621249992222, guid: f01bafc69ac567b4a8eb878abb032cc7,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615951621249992222, guid: f01bafc69ac567b4a8eb878abb032cc7,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -40
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615951621249992222, guid: f01bafc69ac567b4a8eb878abb032cc7,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 18.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615951621249992222, guid: f01bafc69ac567b4a8eb878abb032cc7,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 48.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615951621249992222, guid: f01bafc69ac567b4a8eb878abb032cc7,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615951621249992222, guid: f01bafc69ac567b4a8eb878abb032cc7,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615951621249992222, guid: f01bafc69ac567b4a8eb878abb032cc7,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615951621249992222, guid: f01bafc69ac567b4a8eb878abb032cc7,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615951621249992222, guid: f01bafc69ac567b4a8eb878abb032cc7,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615951621249992222, guid: f01bafc69ac567b4a8eb878abb032cc7,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615951621249992222, guid: f01bafc69ac567b4a8eb878abb032cc7,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615951621249992222, guid: f01bafc69ac567b4a8eb878abb032cc7,
-        type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615951621249992223, guid: f01bafc69ac567b4a8eb878abb032cc7,
-        type: 3}
-      propertyPath: speed
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615951621249992223, guid: f01bafc69ac567b4a8eb878abb032cc7,
-        type: 3}
-      propertyPath: fugeLupu
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4615951621249992223, guid: f01bafc69ac567b4a8eb878abb032cc7,
-        type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 510277814}
-    - target: {fileID: 4615951621249992224, guid: f01bafc69ac567b4a8eb878abb032cc7,
-        type: 3}
-      propertyPath: m_Name
-      value: Lup ula mea ii place de tine
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f01bafc69ac567b4a8eb878abb032cc7, type: 3}
 --- !u!4 &1027893253 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2e5bdd42bb02e2d478710f50f09fe64c,
@@ -25307,7 +25348,7 @@ PrefabInstance:
     - target: {fileID: 8011985461157110725, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110725, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
@@ -25386,6 +25427,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
+      propertyPath: fugeGaina
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
+      propertyPath: fujeSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 510277814}
@@ -25413,6 +25464,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gaina (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110776, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110776, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
@@ -28179,17 +28235,42 @@ PrefabInstance:
     - target: {fileID: 4615951621249992223, guid: f01bafc69ac567b4a8eb878abb032cc7,
         type: 3}
       propertyPath: fugeLupu
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4615951621249992223, guid: f01bafc69ac567b4a8eb878abb032cc7,
         type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 510277814}
+    - target: {fileID: 4615951621249992223, guid: f01bafc69ac567b4a8eb878abb032cc7,
+        type: 3}
+      propertyPath: boxBounds_X1
+      value: -89
+      objectReference: {fileID: 0}
+    - target: {fileID: 4615951621249992223, guid: f01bafc69ac567b4a8eb878abb032cc7,
+        type: 3}
+      propertyPath: boxBounds_X2
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4615951621249992223, guid: f01bafc69ac567b4a8eb878abb032cc7,
+        type: 3}
+      propertyPath: boxBounds_Z1
+      value: -89
+      objectReference: {fileID: 0}
+    - target: {fileID: 4615951621249992223, guid: f01bafc69ac567b4a8eb878abb032cc7,
+        type: 3}
+      propertyPath: boxBounds_Z2
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4615951621249992224, guid: f01bafc69ac567b4a8eb878abb032cc7,
         type: 3}
       propertyPath: m_Name
       value: Lup
+      objectReference: {fileID: 0}
+    - target: {fileID: 4615951621249992224, guid: f01bafc69ac567b4a8eb878abb032cc7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f01bafc69ac567b4a8eb878abb032cc7, type: 3}
@@ -30736,7 +30817,7 @@ PrefabInstance:
     - target: {fileID: 4615951621249992222, guid: f01bafc69ac567b4a8eb878abb032cc7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.6
+      value: -60.8
       objectReference: {fileID: 0}
     - target: {fileID: 4615951621249992222, guid: f01bafc69ac567b4a8eb878abb032cc7,
         type: 3}
@@ -30746,7 +30827,7 @@ PrefabInstance:
     - target: {fileID: 4615951621249992222, guid: f01bafc69ac567b4a8eb878abb032cc7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -74.8
+      value: -7.9
       objectReference: {fileID: 0}
     - target: {fileID: 4615951621249992222, guid: f01bafc69ac567b4a8eb878abb032cc7,
         type: 3}
@@ -30795,13 +30876,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4615951621249992223, guid: f01bafc69ac567b4a8eb878abb032cc7,
         type: 3}
+      propertyPath: fugeLupu
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4615951621249992223, guid: f01bafc69ac567b4a8eb878abb032cc7,
+        type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 510277814}
+    - target: {fileID: 4615951621249992223, guid: f01bafc69ac567b4a8eb878abb032cc7,
+        type: 3}
+      propertyPath: boxBounds_X1
+      value: -89
+      objectReference: {fileID: 0}
+    - target: {fileID: 4615951621249992223, guid: f01bafc69ac567b4a8eb878abb032cc7,
+        type: 3}
+      propertyPath: boxBounds_X2
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4615951621249992223, guid: f01bafc69ac567b4a8eb878abb032cc7,
+        type: 3}
+      propertyPath: boxBounds_Z1
+      value: -89
+      objectReference: {fileID: 0}
+    - target: {fileID: 4615951621249992223, guid: f01bafc69ac567b4a8eb878abb032cc7,
+        type: 3}
+      propertyPath: boxBounds_Z2
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4615951621249992224, guid: f01bafc69ac567b4a8eb878abb032cc7,
         type: 3}
       propertyPath: m_Name
       value: Lup (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4615951621249992224, guid: f01bafc69ac567b4a8eb878abb032cc7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f01bafc69ac567b4a8eb878abb032cc7, type: 3}
@@ -35103,7 +35214,7 @@ PrefabInstance:
     - target: {fileID: 8011985461157110725, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 27
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110725, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
@@ -35182,6 +35293,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
+      propertyPath: fugeGaina
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
+      propertyPath: fujeSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 510277814}
@@ -35209,6 +35330,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gaina (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110776, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110776, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
@@ -38917,7 +39043,7 @@ PrefabInstance:
     - target: {fileID: 8011985461157110725, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110725, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
@@ -38996,6 +39122,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
+      propertyPath: fugeGaina
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
+      propertyPath: fujeSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110726, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 510277814}
@@ -39023,6 +39159,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Gaina (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011985461157110776, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8011985461157110776, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
@@ -46672,6 +46813,16 @@ PrefabInstance:
       propertyPath: guiCanvas
       value: 
       objectReference: {fileID: 2099225476}
+    - target: {fileID: 9080788254580699111, guid: 7780a5c90b5648242ba07f6ce7cd40c7,
+        type: 3}
+      propertyPath: previousScene
+      value: Village
+      objectReference: {fileID: 0}
+    - target: {fileID: 9080788254580699111, guid: 7780a5c90b5648242ba07f6ce7cd40c7,
+        type: 3}
+      propertyPath: nrGainiInfectate
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7780a5c90b5648242ba07f6ce7cd40c7, type: 3}
 --- !u!1001 &2072028528

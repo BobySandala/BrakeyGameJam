@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class MovementController : MonoBehaviour
@@ -20,6 +21,10 @@ public class MovementController : MonoBehaviour
     public GameManagerScript gameManager;
 
     private bool CanAttack = true;
+
+    public float lupAttackDelay = 1f;
+    private float lupAttackTimeStart = 0f;
+    private bool lupAttacking = false;
 
     // 0 - Left; 1 - Right; 2 - Fwd; 3 - Bwd
     public GameObject[] ArmamentSwoosh;
@@ -45,10 +50,10 @@ public class MovementController : MonoBehaviour
         float moveX = 0f;
         float moveZ = 0f;
 
-        if (Input.GetKey(moveLeft) && CanAttack) { moveX = -1f; lastPressedKey = moveLeft; }
-        if (Input.GetKey(moveRight) && CanAttack) { moveX = 1f; lastPressedKey = moveRight; }
-        if (Input.GetKey(moveForward) && CanAttack) { moveZ = 1f; lastPressedKey = moveForward; }
-        if (Input.GetKey(moveBackward) && CanAttack) { moveZ = -1f; lastPressedKey = moveBackward; }
+        if (Input.GetKey(moveLeft)) { moveX = -1f; lastPressedKey = moveLeft; }
+        if (Input.GetKey(moveRight)) { moveX = 1f; lastPressedKey = moveRight; }
+        if (Input.GetKey(moveForward)) { moveZ = 1f; lastPressedKey = moveForward; }
+        if (Input.GetKey(moveBackward)) { moveZ = -1f; lastPressedKey = moveBackward; }
         if (Input.GetKeyDown(attackKey) && CanAttack) { Attack(); }
 
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
@@ -63,19 +68,37 @@ public class MovementController : MonoBehaviour
             velocity.y = -2f;
         }
 
+        if (lupAttacking)
+        {
+            print("time: " + Time.time);
+            print("lupattack time start: " + lupAttackTimeStart);
+            if (Time.time >= lupAttackTimeStart + lupAttackDelay)
+            {
+                //iti iei dmg
+                print("te-a muscat lupul de buci");
+                lupAttackTimeStart = Time.time;
+                gameManager.playerDamage();
+            }
+        }
+
         controller.Move(velocity * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Lup") || other.CompareTag("Ou"))
+        if (other.CompareTag("Lup"))
+        {
+            lupAttackTimeStart = Time.time;
+            lupAttacking = true;
+        }
+        if (other.CompareTag("Ou"))
         {
             Vector2 positionXZ = new Vector2(transform.position.x, transform.position.z);
             Vector2 targetPosXZ = new Vector2(other.transform.position.x, other.transform.position.z);
             float distance = Vector2.Distance(positionXZ, targetPosXZ);
 
             print("distanta player pu lup:" + distance);
-            if (distance < 17f)
+            if (distance < 10f)
             {
                 //incaseaza dmg
                 gameManager.playerDamage();
@@ -83,31 +106,60 @@ public class MovementController : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Lup"))
+        {
+            lupAttacking = false;
+        }
+    }
+
     void Attack()
     {
         //Debug.Log("Attack performed! Last pressed key: " + lastPressedKey);
         CanAttack = false;
-        if (lastPressedKey != KeyCode.None)
+
+        float mouseX = Input.mousePosition.x - Screen.width / 2;
+        float mouseY = Input.mousePosition.y - Screen.height / 2;
+
+        if (mouseX > 0)
         {
-            if (lastPressedKey == moveLeft)
+            //dreapta ecraului
+            if (mouseY > mouseX)
             {
-                ArmamentSwoosh[0].SetActive(true);
-            }
-            else if (lastPressedKey == moveRight)
-            {
-                ArmamentSwoosh[1].SetActive(true);
-            }
-            else if (lastPressedKey == moveForward)
-            {
+                //dreapta sus deci ataca in sus
                 ArmamentSwoosh[2].SetActive(true);
             }
-            else if (lastPressedKey == moveBackward)
+            else if (mouseY > -mouseX)
             {
+                //dreapta mijloc deci ataca la dreapta
+                ArmamentSwoosh[1].SetActive(true);
+            } else
+            {
+                //dreapta jos deci ataca in jos
                 ArmamentSwoosh[3].SetActive(true);
             }
-
-            StartCoroutine(DelayAndSwooshInactive(SwooshOnTime));
+        } else
+        {
+            //stanga ecranului
+            if (mouseY < mouseX)
+            {
+                //stanga jos deci ataca in sus
+                ArmamentSwoosh[3].SetActive(true);
+            } else if (mouseY < -mouseX)
+            {
+                //stanga mijloc deci ataca in stanga
+                ArmamentSwoosh[0].SetActive(true);
+            } else
+            {
+                //staga sus deci ataca in jos
+                ArmamentSwoosh[2].SetActive(true);
+            }
         }
+
+
+        StartCoroutine(DelayAndSwooshInactive(SwooshOnTime));
+        
     }
 
     IEnumerator DelayAndSwooshInactive(float delay)

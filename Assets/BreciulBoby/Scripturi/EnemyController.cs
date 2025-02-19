@@ -19,6 +19,7 @@ public class EnemyController : MonoBehaviour
     public float patrolAreaSize = 15f;
     public float waitTime = 2f;
 
+    private bool isPatroling = true;
     private BoxCollider boxCollider;
 
     [SerializeField]
@@ -52,6 +53,10 @@ public class EnemyController : MonoBehaviour
         
     }
     
+    public void Flee()
+    {
+        isPatroling = false;
+    }
     private void OnTriggerEnter(Collider other)
     {
         

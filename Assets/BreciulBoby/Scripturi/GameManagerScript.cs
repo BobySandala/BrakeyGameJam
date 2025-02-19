@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour
 {
@@ -13,8 +14,16 @@ public class GameManagerScript : MonoBehaviour
     public KeyCode anfriz;
     public int nrGainiInfectate = 7;
     public int COUNTER_REAL = 0;
-
+    [SerializeField]
+    private int HP = 3;
     public GameObject[] gaini;
+
+    private int gainiDezinfectate = 0;
+
+    [SerializeField]
+    private bool isGameOver = false;
+    [SerializeField]
+    private bool isGamePassed = false;
     
     // Start is called before the first frame update
     void Start()
@@ -27,15 +36,57 @@ public class GameManagerScript : MonoBehaviour
     {
         if (Input.GetKeyDown(anfriz))
         {
+            print("111---");
             if (guiCanvas.GetComponent<UI_Controller_LV1>().TaceSlapnut())
             {
-                Time.timeScale = 1;
-                InfecteazaGainaRendam();
-                guiCanvas.GetComponent<UI_Controller_LV1>().NextPhase();
+                print("111--+");
+                if (isGameOver)
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                }
+                else if (isGamePassed)
+                {
+                    int currentIndex = SceneManager.GetActiveScene().buildIndex;
+                    int previousIndex = currentIndex - 1;
+
+                    if (previousIndex >= 0) // Ensure it's not out of bounds
+                    {
+                        SceneManager.LoadScene(previousIndex);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("No previous scene to load!");
+                    }
+                }
+                else
+                {
+                    Time.timeScale = 1;
+                    InfecteazaGainaRendam();
+                    guiCanvas.GetComponent<UI_Controller_LV1>().NextPhase();
+                }
             }
+        }
+
+        if (HP <= 0)
+        {
+            //game over
+            isGameOver = true;
+            guiCanvas.GetComponent<UI_Controller_LV1>().GameOver();
+        }
+        if (gainiDezinfectate >= 5)
+        {
+            //game passed
+            isGamePassed = true;
+            guiCanvas.GetComponent<UI_Controller_LV1>().GamePassed();
         }
         
         //cautaGaini();
+    }
+
+    public void MuceaLovit()
+    {
+        gainiDezinfectate++;
+        guiCanvas.GetComponent<UI_Controller_LV1>().MuceaDied();
     }
 
     public void cautaGaini()
@@ -46,6 +97,7 @@ public class GameManagerScript : MonoBehaviour
 
     public void playerDamage()
     {
+        HP--;
         guiCanvas.GetComponent<UI_Controller_LV1>().InimaDied();
     }
 
@@ -58,7 +110,7 @@ public class GameManagerScript : MonoBehaviour
     {
         lupiMorti++;
         guiCanvas.GetComponent<UI_Controller_LV1>().LupDied();
-        if (lupiMorti == 3)
+        if (lupiMorti >= 2)
         {
             guiCanvas.GetComponent<UI_Controller_LV1>().NextPhase();
             //Time.timeScale = 0;
