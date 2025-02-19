@@ -15,14 +15,13 @@ public class GainaController : EnemyController
     public float nextAttackSpeed = 0f;
 
     public float patrolSpeed = 3f;
+    public float fujeSpeed = 4f;
     private bool isPatrolling = true;
     private float attackRadiusLup = 6.5f;
     public GameManagerScript gameManager;
     public bool isInfected = false;
     public Sprite gainaNormala;
     public Sprite gainaNebuna;
-
-    
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +53,10 @@ public class GainaController : EnemyController
         {
             base.speed = patrolSpeed;
             base.Patrol();
+        }
+        else
+        {
+            base.speed = fujeSpeed;
         }
         
         spriteRenderer.sprite = (isInfected) ? gainaNebuna : gainaNormala;

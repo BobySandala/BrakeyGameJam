@@ -67,9 +67,21 @@ public class GameManagerScript : MonoBehaviour
     
     public void InfecteazaGainaRendam()
     {
+        int nrGainiNormale = 0;
         cautaGaini();
         if (nrGainiInfectate <= 0) return;
         GainaController gaina = new GainaController();
+
+        foreach (GameObject g in gaini)
+        {
+            if (!g.GetComponent<GainaController>().isInfected)
+            {
+                nrGainiNormale++;
+            }
+        }
+        
+        if(nrGainiNormale <= 0) return;
+        
         do
         {
             gaina = gaini[Random.Range(0, gaini.Length)].GetComponent<GainaController>();

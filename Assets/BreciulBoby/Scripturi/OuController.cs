@@ -36,7 +36,7 @@ public class OuController : Proiectil
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Lup"))
+        if (other.CompareTag("Player") || other.CompareTag("Lup") || other.CompareTag("Armament"))
         {
             spargeOul();
         }
