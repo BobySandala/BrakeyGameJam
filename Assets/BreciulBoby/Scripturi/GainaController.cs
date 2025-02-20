@@ -92,12 +92,13 @@ public class GainaController : EnemyController
         {
             if (gameManager != null)
             {
+                print("toggle - gaina controller");
                 gameManager.GainaMoarta();
             }
-            
+            print("toggle - am omorat gaina");
             Destroy(gameObject);
         }
-        print("distanta: " + distance);
+        //print("distanta: " + distance);
         isPatrolling = true;
         if (distance < fugeGaina)
         {
@@ -114,7 +115,7 @@ public class GainaController : EnemyController
             Vector3 startPosition = transform.position;
             GameObject ouInstance = Instantiate(glont, startPosition, Quaternion.identity);
             OuController ou = ouInstance.GetComponent<OuController>();
-            if (ou != null)
+            if (ou != null && !gameManager.frezzeAll)
             {
                 ou.Initialize(startPosition, direction, speedOu, lifeSpan);
                 ou.transform.localScale = new Vector3(7f, 7f, 7f);
@@ -167,7 +168,11 @@ public class GainaController : EnemyController
                 }
                 else
                 {
-
+                    if (gameManager != null)
+                    {
+                        //print("toggle - gaina controller");
+                        gameManager.GainaMoarta();
+                    }
                     Object.Destroy(gameObject);
                 }
             }

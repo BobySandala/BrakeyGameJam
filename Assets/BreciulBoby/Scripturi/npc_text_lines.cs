@@ -17,14 +17,19 @@ public class npc_text_lines : MonoBehaviour
     public float pause = 0.1f;
     private float nextLetterTime = 0f;
 
-    private int current_message;
+    private int current_message = -1;
     private bool writing_message = false;
     private bool vede_player = false;
+
+    private Animator animator;
+
+    public bool linesInOrder;
 
     // Start is called before the first frame update
     void Start()
     {
         textBubble.SetActive(false);
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -46,13 +51,26 @@ public class npc_text_lines : MonoBehaviour
                     writing_message = false; // Typing finished
                 }
             }
+        } else
+        {
         }
     }
 
     public void StartTyping()//reset writing area
     {
         if (messages.Length == 0) return;
-        current_message = Random.Range(0, messages.Length);
+        if (!linesInOrder)
+        {
+            current_message = Random.Range(0, messages.Length);
+        }
+        else
+        {
+            current_message++;
+            if (current_message >= messages.Length)
+            {
+                current_message = 0;
+            }
+        }
 
         fullMessage = messages[current_message];
         guiText.text = "";
@@ -67,6 +85,7 @@ public class npc_text_lines : MonoBehaviour
             print("npc vede playerul");
             textBubble.SetActive(true);
             StartTyping();
+            animator.SetTrigger("vorbeste");
         }
     }
 
@@ -76,6 +95,7 @@ public class npc_text_lines : MonoBehaviour
         {
             print("npc nu mai vede player");
             textBubble.SetActive(false);
+            animator.SetTrigger("idle");
         }
     }
 }

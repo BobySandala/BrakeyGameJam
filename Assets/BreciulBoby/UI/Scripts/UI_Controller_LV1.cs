@@ -12,7 +12,7 @@ public class UI_Controller_LV1 : MonoBehaviour
     public GameObject GamePassedPhase;
 
     public Phase_1_Controller_LV_1 phase1;
-    public phase_2_UI phase_2;
+    public slepNath_Pause phase_2;
     public Phase_1_Controller_LV_1 phase_3;
 
     public phase_2_UI phase_GO;
@@ -120,6 +120,7 @@ public class UI_Controller_LV1 : MonoBehaviour
     public void GainaDied()
     {
         phase1.DedGaina();
+        print("toggle - UI controller");
         phase_3.DedGaina();
     }
     public void InimaDied()

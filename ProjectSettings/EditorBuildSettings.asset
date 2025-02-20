@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/BreciulBoby/Scenes/Leval1.unity
     guid: cd4e9c8a6506ff641ab7ead72fd5cc8b
+  - enabled: 1
+    path: Assets/BreciulBoby/Scenes/Lv_2_Quicksand.unity
+    guid: 9c1a52f86f798fa4eb623834409e3146
+  - enabled: 1
+    path: Assets/BreciulBoby/Scenes/lv2_transition.unity
+    guid: bd070fd512a88ba489035f7eedb20d0b
+  - enabled: 1
+    path: Assets/BreciulBoby/Scenes/true_lv2.unity
+    guid: 9cb227af390b5434793121b75b55cf6c
   m_configObjects: {}

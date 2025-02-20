@@ -17,8 +17,10 @@ public class Phase_1_Controller_LV_1 : MonoBehaviour
     }
     public void DedGaina()
     {
+        
         if (Gaini)
         {
+            print("toggle - controller");
             Gaini.Died();
         }
     }
@@ -29,4 +31,5 @@ public class Phase_1_Controller_LV_1 : MonoBehaviour
             Inimi.Died();
         }
     }
+
 }

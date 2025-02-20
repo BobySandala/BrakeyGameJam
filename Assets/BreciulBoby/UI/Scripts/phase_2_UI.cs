@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class phase_2_UI : MonoBehaviour
 {
@@ -23,6 +24,10 @@ public class phase_2_UI : MonoBehaviour
     private int letterIndex;
     public float pause = 0.1f;
     private float nextLetterTime = 0f;
+
+    private int currentSprite;
+    public Sprite[] SlepNuth_Sprites;
+    public Image SlepNuth_Sprite;
     void Start()
     {
         Debug.Log("Start called on " + gameObject.name);
@@ -96,6 +101,13 @@ public class phase_2_UI : MonoBehaviour
 
     void NextMessage()
     {
+        if (currentSprite < SlepNuth_Sprites.Length)
+        {
+            SlepNuth_Sprite.sprite = SlepNuth_Sprites[currentSprite++];
+        }else
+        {
+            currentSprite = 0;
+        }
         current_message++;
         if (current_message >= messages.Length)
         {

@@ -35,12 +35,14 @@ public class toggleDedPng : MonoBehaviour
 
     public void Died()
     {
+        
         if (number_of_ded < number_of_imagini)
         {
             if (images[number_of_ded] != null)
             {
                 dedOralIve[number_of_ded] = true;
                 frame_index[number_of_ded] = 0;
+                print("toggleDedPng");
             }
             number_of_ded++;
         }

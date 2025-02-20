@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -11,6 +12,7 @@ public class EnemyController : MonoBehaviour
     public float boxBounds_Z1;
     public float boxBounds_Z2;
 
+    public GameManagerScript gm;
     private CharacterController controller;
     private Vector3 velocity;
     public float gravity = 9.81f;
@@ -70,14 +72,15 @@ public class EnemyController : MonoBehaviour
 
     public void moveEnemy(Vector3 direction)
     {
+        if (gm.frezzeAll) { return; }
         //direction.y = 0f;
         //print(direction);
         //controller.Move(direction * speed * Time.deltaTime);
-
+        
         if (controller != null)
         {
             direction.y = 0f;
-            controller.Move(direction * speed * Time.deltaTime);
+            controller.Move(speed * Time.deltaTime * direction);
         }
         else
         {

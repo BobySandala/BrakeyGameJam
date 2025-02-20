@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour
@@ -17,6 +18,7 @@ public class GameManagerScript : MonoBehaviour
     [SerializeField]
     private int HP = 3;
     public GameObject[] gaini;
+    public bool frezzeAll = false;
 
     private int gainiDezinfectate = 0;
 
@@ -24,7 +26,10 @@ public class GameManagerScript : MonoBehaviour
     private bool isGameOver = false;
     [SerializeField]
     private bool isGamePassed = false;
+    private int numarGainiMoarte = 0;
+
     
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +51,7 @@ public class GameManagerScript : MonoBehaviour
                 }
                 else if (isGamePassed)
                 {
+                    frezzeAll = true;
                     int currentIndex = SceneManager.GetActiveScene().buildIndex;
                     int previousIndex = currentIndex - 1;
 
@@ -63,19 +69,22 @@ public class GameManagerScript : MonoBehaviour
                     Time.timeScale = 1;
                     InfecteazaGainaRendam();
                     guiCanvas.GetComponent<UI_Controller_LV1>().NextPhase();
+                    frezzeAll = false;
                 }
             }
         }
 
-        if (HP <= 0)
+        if (HP <= 0 || numarGainiMoarte >= 3)
         {
             //game over
             isGameOver = true;
+            frezzeAll = true;
             guiCanvas.GetComponent<UI_Controller_LV1>().GameOver();
         }
         if (gainiDezinfectate >= 5)
         {
             //game passed
+            frezzeAll = true;
             isGamePassed = true;
             guiCanvas.GetComponent<UI_Controller_LV1>().GamePassed();
         }
@@ -104,6 +113,12 @@ public class GameManagerScript : MonoBehaviour
     public void GainaMoarta()
     {
         guiCanvas.GetComponent<UI_Controller_LV1>().GainaDied();
+        print("toggle - game manager");
+        numarGainiMoarte++;
+        if (numarGainiMoarte >= 3)
+        {
+            isGameOver = true;
+        }
     }
 
     public void LupMort()
@@ -113,6 +128,7 @@ public class GameManagerScript : MonoBehaviour
         if (lupiMorti >= 2)
         {
             guiCanvas.GetComponent<UI_Controller_LV1>().NextPhase();
+            frezzeAll = true;
             //Time.timeScale = 0;
         }
     }

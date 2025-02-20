@@ -26,11 +26,13 @@ public class MovementController : MonoBehaviour
     private float lupAttackTimeStart = 0f;
     private bool lupAttacking = false;
 
+    private Animator animator;
     // 0 - Left; 1 - Right; 2 - Fwd; 3 - Bwd
     public GameObject[] ArmamentSwoosh;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
 
         controller.slopeLimit = slopeLimit;
@@ -47,9 +49,23 @@ public class MovementController : MonoBehaviour
 
     void Update()
     {
+        if (gameManager != null) 
+        { 
+            if (gameManager.frezzeAll) 
+            {
+                animator.SetFloat("anim_speed", 0);
+                return; 
+            } else
+            {
+                animator.SetFloat("anim_speed", 0.5f);
+            }
+        }
         float moveX = 0f;
         float moveZ = 0f;
 
+        if (Input.GetKeyDown(moveLeft) && CanAttack) { animator.SetTrigger("stanga"); GetComponent<SpriteRenderer>().flipX = false; }
+        if (Input.GetKeyDown(moveRight) && CanAttack) { animator.SetTrigger("dreapta"); GetComponent<SpriteRenderer>().flipX = false; }
+       
         if (Input.GetKey(moveLeft)) { moveX = -1f; lastPressedKey = moveLeft; }
         if (Input.GetKey(moveRight)) { moveX = 1f; lastPressedKey = moveRight; }
         if (Input.GetKey(moveForward)) { moveZ = 1f; lastPressedKey = moveForward; }
@@ -57,6 +73,7 @@ public class MovementController : MonoBehaviour
         if (Input.GetKeyDown(attackKey) && CanAttack) { Attack(); }
 
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
+        
         controller.Move(move.normalized * speed * Time.deltaTime);
 
         if (!controller.isGrounded)
@@ -67,6 +84,7 @@ public class MovementController : MonoBehaviour
         {
             velocity.y = -2f;
         }
+        controller.Move(velocity * Time.deltaTime);
 
         if (lupAttacking)
         {
@@ -81,7 +99,6 @@ public class MovementController : MonoBehaviour
             }
         }
 
-        controller.Move(velocity * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -116,6 +133,7 @@ public class MovementController : MonoBehaviour
 
     void Attack()
     {
+        animator.SetTrigger("attack");
         //Debug.Log("Attack performed! Last pressed key: " + lastPressedKey);
         CanAttack = false;
 
@@ -129,15 +147,18 @@ public class MovementController : MonoBehaviour
             {
                 //dreapta sus deci ataca in sus
                 ArmamentSwoosh[2].SetActive(true);
+                //GetComponent<SpriteRenderer>().flipX = false;
             }
             else if (mouseY > -mouseX)
             {
                 //dreapta mijloc deci ataca la dreapta
                 ArmamentSwoosh[1].SetActive(true);
+                GetComponent<SpriteRenderer>().flipX = false;
             } else
             {
                 //dreapta jos deci ataca in jos
                 ArmamentSwoosh[3].SetActive(true);
+                //GetComponent<SpriteRenderer>().flipX = false;
             }
         } else
         {
@@ -146,14 +167,17 @@ public class MovementController : MonoBehaviour
             {
                 //stanga jos deci ataca in sus
                 ArmamentSwoosh[3].SetActive(true);
+                //GetComponent<SpriteRenderer>().flipX = false;
             } else if (mouseY < -mouseX)
             {
                 //stanga mijloc deci ataca in stanga
                 ArmamentSwoosh[0].SetActive(true);
+                GetComponent<SpriteRenderer>().flipX = true;
             } else
             {
                 //staga sus deci ataca in jos
                 ArmamentSwoosh[2].SetActive(true);
+                //GetComponent<SpriteRenderer>().flipX = false;
             }
         }
 
