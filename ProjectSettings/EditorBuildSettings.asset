@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/BreciulBoby/Scenes/MainMenuScene.unity
+    guid: 0085efeb5c8584b46be29a7ccb7e54a8
+  - enabled: 1
     path: Assets/BreciulBoby/Scenes/Village.unity
     guid: 5a1351f0a20deb446914a47bef472735
   - enabled: 1
