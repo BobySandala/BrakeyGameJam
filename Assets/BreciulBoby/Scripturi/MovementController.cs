@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -26,6 +27,9 @@ public class MovementController : MonoBehaviour
     private float lupAttackTimeStart = 0f;
     private bool lupAttacking = false;
 
+    public bool b_Freeze = false;
+
+    public int uInt_HP;
     private Animator animator;
     // 0 - Left; 1 - Right; 2 - Fwd; 3 - Bwd
     public GameObject[] ArmamentSwoosh;
@@ -60,6 +64,8 @@ public class MovementController : MonoBehaviour
                 animator.SetFloat("anim_speed", 0.5f);
             }
         }
+
+
         float moveX = 0f;
         float moveZ = 0f;
 
@@ -101,6 +107,14 @@ public class MovementController : MonoBehaviour
 
     }
 
+    public void TakeDamage(GameObject GO_source)
+    {
+        print("player a luat damage");
+        EnemyAttackHitbox hitbox = GO_source.GetComponent<EnemyAttackHitbox>();
+        hitbox.DecativateHitbox();
+        uInt_HP -= hitbox.uInt_DmgAmount;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Lup"))
@@ -120,6 +134,11 @@ public class MovementController : MonoBehaviour
                 //incaseaza dmg
                 gameManager.playerDamage();
             }
+        }
+
+        if(other.CompareTag("EnemyDamage"))
+        {
+            TakeDamage(other.gameObject);
         }
     }
 
@@ -147,17 +166,20 @@ public class MovementController : MonoBehaviour
             {
                 //dreapta sus deci ataca in sus
                 ArmamentSwoosh[2].SetActive(true);
+                ArmamentSwoosh[2].GetComponent<BoxCollider>().enabled = true;
                 //GetComponent<SpriteRenderer>().flipX = false;
             }
             else if (mouseY > -mouseX)
             {
                 //dreapta mijloc deci ataca la dreapta
                 ArmamentSwoosh[1].SetActive(true);
+                ArmamentSwoosh[1].GetComponent<BoxCollider>().enabled = true;
                 GetComponent<SpriteRenderer>().flipX = false;
             } else
             {
                 //dreapta jos deci ataca in jos
                 ArmamentSwoosh[3].SetActive(true);
+                ArmamentSwoosh[3].GetComponent<BoxCollider>().enabled = true;
                 //GetComponent<SpriteRenderer>().flipX = false;
             }
         } else
@@ -167,23 +189,25 @@ public class MovementController : MonoBehaviour
             {
                 //stanga jos deci ataca in sus
                 ArmamentSwoosh[3].SetActive(true);
+                ArmamentSwoosh[3].GetComponent<BoxCollider>().enabled = true;
                 //GetComponent<SpriteRenderer>().flipX = false;
             } else if (mouseY < -mouseX)
             {
                 //stanga mijloc deci ataca in stanga
                 ArmamentSwoosh[0].SetActive(true);
+                ArmamentSwoosh[0].GetComponent<BoxCollider>().enabled = true;
                 GetComponent<SpriteRenderer>().flipX = true;
             } else
             {
                 //staga sus deci ataca in jos
                 ArmamentSwoosh[2].SetActive(true);
+                ArmamentSwoosh[2].GetComponent<BoxCollider>().enabled = true;
                 //GetComponent<SpriteRenderer>().flipX = false;
             }
         }
-
+        Physics.SyncTransforms(); // Force Unity to recognize the new collider
 
         StartCoroutine(DelayAndSwooshInactive(SwooshOnTime));
-        
     }
 
     IEnumerator DelayAndSwooshInactive(float delay)

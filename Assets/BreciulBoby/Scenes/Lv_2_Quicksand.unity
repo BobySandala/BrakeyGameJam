@@ -4676,7 +4676,7 @@ MonoBehaviour:
   quickSilver: {fileID: 1440613520}
   UI_Controller: {fileID: 1167232339}
   playerPositionAtContact: {x: 0, y: 0, z: 0}
-  graity_in_sand: 0.0001
+  graity_in_sand: 0.0005
   QS: 0
   numberOfKeyPresses: 1
   KeyNames: 200000006f00000030010000
