@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class MovementController : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class MovementController : MonoBehaviour
     private KeyCode lastPressedKey;
     public float SwooshOnTime = 0.2f;
 
-    public GameManagerScript gameManager;
+    //public GameManagerScript gameManager;
 
     private bool CanAttack = true;
 
@@ -33,9 +34,21 @@ public class MovementController : MonoBehaviour
     private Animator animator;
     // 0 - Left; 1 - Right; 2 - Fwd; 3 - Bwd
     public GameObject[] ArmamentSwoosh;
+    //0 topor, 1 arc
+    public int i_EquippedWeapon;
 
+    private int i_BowFramesLength = 6;
+    private bool b_AttackHeld;
+    private float f_ChargeStartTime;
+    public float f_BowFullCharge = 1;
+
+    public Sprite[] SpritesBowUp;
+    public Sprite[] SpritesBowDown;
+    public Sprite[] SpritesBowLeft;
+    public Sprite[] SpritesBowRight;
     void Start()
     {
+        
         animator = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
 
@@ -53,18 +66,14 @@ public class MovementController : MonoBehaviour
 
     void Update()
     {
-        if (gameManager != null) 
-        { 
-            if (gameManager.frezzeAll) 
-            {
-                animator.SetFloat("anim_speed", 0);
-                return; 
-            } else
-            {
-                animator.SetFloat("anim_speed", 0.5f);
-            }
+        if (b_Freeze)
+        {
+            animator.SetFloat("anim_speed", 0);
+            return;
+        } else
+        {
+            animator.SetFloat("anim_speed", 0.5f);
         }
-
 
         float moveX = 0f;
         float moveZ = 0f;
@@ -76,7 +85,10 @@ public class MovementController : MonoBehaviour
         if (Input.GetKey(moveRight)) { moveX = 1f; lastPressedKey = moveRight; }
         if (Input.GetKey(moveForward)) { moveZ = 1f; lastPressedKey = moveForward; }
         if (Input.GetKey(moveBackward)) { moveZ = -1f; lastPressedKey = moveBackward; }
-        if (Input.GetKeyDown(attackKey) && CanAttack) { Attack(); }
+        if (Input.GetKeyDown(attackKey) && CanAttack) { Attack(); b_AttackHeld = true; f_ChargeStartTime = Time.time; }
+        if (Input.GetKeyUp(attackKey)) { b_AttackHeld = false; }
+
+        if (b_AttackHeld) { v_ChargeBowle(); }
 
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
         
@@ -101,7 +113,7 @@ public class MovementController : MonoBehaviour
                 //iti iei dmg
                 print("te-a muscat lupul de buci");
                 lupAttackTimeStart = Time.time;
-                gameManager.playerDamage();
+                //gameManager.playerDamage();
             }
         }
 
@@ -113,6 +125,11 @@ public class MovementController : MonoBehaviour
         EnemyAttackHitbox hitbox = GO_source.GetComponent<EnemyAttackHitbox>();
         hitbox.DecativateHitbox();
         uInt_HP -= hitbox.uInt_DmgAmount;
+    }
+
+    public void TakeDamage()
+    {
+        uInt_HP--;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -132,12 +149,14 @@ public class MovementController : MonoBehaviour
             if (distance < 10f)
             {
                 //incaseaza dmg
-                gameManager.playerDamage();
+                //gameManager.playerDamage();
+                TakeDamage();
             }
         }
 
         if(other.CompareTag("EnemyDamage"))
         {
+            print("enemy damage");
             TakeDamage(other.gameObject);
         }
     }
@@ -150,64 +169,55 @@ public class MovementController : MonoBehaviour
         }
     }
 
-    void Attack()
+    private void v_ChargeBowle()
     {
-        animator.SetTrigger("attack");
-        //Debug.Log("Attack performed! Last pressed key: " + lastPressedKey);
-        CanAttack = false;
+        if (i_EquippedWeapon == 1)
+        {
+            float f_ChargingTime = Time.time - f_ChargeStartTime;
+            float f_ChargingPercent = f_ChargingTime / f_BowFullCharge;
+            int i_ChargeFrame;
+            if (f_ChargingPercent >= 1) { f_ChargingPercent = 0.99f; }
+            i_ChargeFrame = Mathf.FloorToInt(f_ChargingPercent * 6);
+            print("charge boule " + i_ChargeFrame);
 
+            
+        }
+    }
+
+    //0 stanga | 1 dreapta | 2 sus | 3 jos
+    private int i_MouseCadran()
+    {
         float mouseX = Input.mousePosition.x - Screen.width / 2;
         float mouseY = Input.mousePosition.y - Screen.height / 2;
 
         if (mouseX > 0)
         {
             //dreapta ecraului
-            if (mouseY > mouseX)
-            {
-                //dreapta sus deci ataca in sus
-                ArmamentSwoosh[2].SetActive(true);
-                ArmamentSwoosh[2].GetComponent<BoxCollider>().enabled = true;
-                //GetComponent<SpriteRenderer>().flipX = false;
-            }
-            else if (mouseY > -mouseX)
-            {
-                //dreapta mijloc deci ataca la dreapta
-                ArmamentSwoosh[1].SetActive(true);
-                ArmamentSwoosh[1].GetComponent<BoxCollider>().enabled = true;
-                GetComponent<SpriteRenderer>().flipX = false;
-            } else
-            {
-                //dreapta jos deci ataca in jos
-                ArmamentSwoosh[3].SetActive(true);
-                ArmamentSwoosh[3].GetComponent<BoxCollider>().enabled = true;
-                //GetComponent<SpriteRenderer>().flipX = false;
-            }
-        } else
-        {
-            //stanga ecranului
-            if (mouseY < mouseX)
-            {
-                //stanga jos deci ataca in sus
-                ArmamentSwoosh[3].SetActive(true);
-                ArmamentSwoosh[3].GetComponent<BoxCollider>().enabled = true;
-                //GetComponent<SpriteRenderer>().flipX = false;
-            } else if (mouseY < -mouseX)
-            {
-                //stanga mijloc deci ataca in stanga
-                ArmamentSwoosh[0].SetActive(true);
-                ArmamentSwoosh[0].GetComponent<BoxCollider>().enabled = true;
-                GetComponent<SpriteRenderer>().flipX = true;
-            } else
-            {
-                //staga sus deci ataca in jos
-                ArmamentSwoosh[2].SetActive(true);
-                ArmamentSwoosh[2].GetComponent<BoxCollider>().enabled = true;
-                //GetComponent<SpriteRenderer>().flipX = false;
-            }
+            if (mouseY > mouseX) { return 2; }
+            else if (mouseY > -mouseX) { return 1; }
+            else { return 3; }
         }
-        Physics.SyncTransforms(); // Force Unity to recognize the new collider
+        else
+        {
+            if (mouseY < mouseX) { return 3; }
+            else if (mouseY < -mouseX) { return 0; }
+            else { return 2; }
+        }
+    }
 
-        StartCoroutine(DelayAndSwooshInactive(SwooshOnTime));
+    void Attack()
+    {
+        if (i_EquippedWeapon == 0)
+        {
+            animator.SetTrigger("attack");
+            //Debug.Log("Attack performed! Last pressed key: " + lastPressedKey);
+            CanAttack = false;
+            ArmamentSwoosh[i_MouseCadran()].SetActive(true);
+            ArmamentSwoosh[i_MouseCadran()].GetComponent<BoxCollider>().enabled = true;
+            Physics.SyncTransforms(); // Force Unity to recognize the new collider
+
+            StartCoroutine(DelayAndSwooshInactive(SwooshOnTime));
+        }
     }
 
     IEnumerator DelayAndSwooshInactive(float delay)

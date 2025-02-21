@@ -18,7 +18,7 @@ public class GainaController : EnemyController
     public float fujeSpeed = 30f;
     [SerializeField]
     private bool isPatrolling = true;
-    private float attackRadiusLup = 6.5f;
+    public float attackRadiusLup = 6.5f;
     public GameManagerScript gameManager;
     public bool isInfected = false;
     public Sprite gainaNormala;
@@ -88,7 +88,7 @@ public class GainaController : EnemyController
         
         float distance = Vector2.Distance(positionXZ, targetPosXZ);
 
-        if (distance < attackRadiusLup && (playerTag == "Lup" || playerTag == "Armament"))
+        if (distance < attackRadiusLup && (playerTag == "Lup" || playerTag == "Armament" || playerTag == "EnemyDamage"))
         {
             if (gameManager != null)
             {
@@ -150,7 +150,7 @@ public class GainaController : EnemyController
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Armament"))
+        if (other.CompareTag("Armament") || other.CompareTag("EnemyDamage"))
         {
             Vector2 positionXZ = new Vector2(transform.position.x, transform.position.z);
             Vector2 targetPosXZ = new Vector2(other.transform.position.x, other.transform.position.z);

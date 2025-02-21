@@ -12,6 +12,7 @@ public class GameManagerScript : MonoBehaviour
     private int gainiMoarte = 0;
     [SerializeField]
     private int lupiMorti = 0;
+    private int totalLupi = 2;
     public KeyCode anfriz;
     public int nrGainiInfectate = 7;
     public int COUNTER_REAL = 0;
@@ -27,18 +28,25 @@ public class GameManagerScript : MonoBehaviour
     [SerializeField]
     private bool isGamePassed = false;
     private int numarGainiMoarte = 0;
-
+    public MovementController player;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        HP = player.uInt_HP;
+        totalLupi = GameObject.FindGameObjectsWithTag("Lup").Length;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (totalLupi > GameObject.FindGameObjectsWithTag("Lup").Length)
+        {
+            totalLupi = GameObject.FindGameObjectsWithTag("Lup").Length;
+            LupMort();
+        }
+
         if (Input.GetKeyDown(anfriz))
         {
             print("111---");
@@ -74,6 +82,16 @@ public class GameManagerScript : MonoBehaviour
             }
         }
 
+        if (player != null)
+        {
+            if (player.uInt_HP < HP) 
+            {
+                playerDamage();
+            }
+        }
+
+
+
         if (HP <= 0 || numarGainiMoarte >= 3)
         {
             //game over
@@ -88,7 +106,7 @@ public class GameManagerScript : MonoBehaviour
             isGamePassed = true;
             guiCanvas.GetComponent<UI_Controller_LV1>().GamePassed();
         }
-        
+        player.b_Freeze = frezzeAll;
         //cautaGaini();
     }
 

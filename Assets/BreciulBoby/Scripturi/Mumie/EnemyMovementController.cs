@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EnemyMovementController : MonoBehaviour
@@ -39,12 +40,21 @@ public class EnemyMovementController : MonoBehaviour
 
     protected float f_DeathTime;
     public float f_DeathLengthTime;
+
+    public string[] s_TargetTags;
+
+    private float f_Retargeting;
+    public float f_RetargetingTime = 1;
+
     protected void Start()
     {
         v3_LastPosition = transform.position;
         CC_controller = GetComponent<CharacterController>();
-        //search for player
-        GO_player = GameObject.FindGameObjectWithTag("Player");
+
+
+        v_ChooseTarget();
+        
+
         //animator = GetComponent<Animator>();
         if (A_SpriteAnimator != null)
         {
@@ -52,9 +62,39 @@ public class EnemyMovementController : MonoBehaviour
         }
     }
 
+    private void v_ChooseTarget()
+    {
+        int i_Index = 0;
+        int i_Index2 = 0;
+        float f_Dist = 1000000;
+        List<GameObject> g = new List<GameObject>();
+        foreach (string s in s_TargetTags)
+        {
+            GameObject[] gg = GameObject.FindGameObjectsWithTag(s);
+            foreach (GameObject ggg in gg)
+            {
+                g.Add(ggg);
+                if (Vector3.Distance(transform.position, ggg.transform.position) > f_Dist)
+                {
+                    f_Dist = Vector3.Distance(transform.position,ggg.transform.position);
+                    i_Index = i_Index2;
+                }
+                i_Index2++;
+            }
+        }
+        GO_player = g[i_Index];
+    }
+
     // Update is called once per frame
     protected void Update()
     {
+
+        if (Time.time > f_Retargeting)
+        {
+            f_Retargeting = Time.time + f_RetargetingTime;
+            v_ChooseTarget();
+        }
+
         if (GO_player != null)
         {
             print("am gasit playerul la pozitia: " + GO_player.transform.position);

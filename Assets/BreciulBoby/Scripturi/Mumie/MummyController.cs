@@ -31,15 +31,18 @@ public class MummyController : EnemyMovementController
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        foreach (string s in s_TargetTags)
         {
-            if (base.enemyAttackHitbox != null)
+            if (other.CompareTag(s))
             {
-                base.enemyAttackHitbox.SetSeePlayerTime(Time.time);
-                base.enemyAttackHitbox.SetChargingAttack(true);
+                if (base.enemyAttackHitbox != null)
+                {
+                    base.enemyAttackHitbox.SetSeePlayerTime(Time.time);
+                    base.enemyAttackHitbox.SetChargingAttack(true);
+                }
             }
+            print("player a intrat in collider");
         }
-        print("player a intrat in collider");
     }
 
     private void OnTriggerExit(Collider other)
