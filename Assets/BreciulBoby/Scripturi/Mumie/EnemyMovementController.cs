@@ -50,16 +50,8 @@ public class EnemyMovementController : MonoBehaviour
     {
         v3_LastPosition = transform.position;
         CC_controller = GetComponent<CharacterController>();
-
-
         v_ChooseTarget();
-        
-
         //animator = GetComponent<Animator>();
-        if (A_SpriteAnimator != null)
-        {
-            A_SpriteAnimator.SetFloat("anim_speed", f_AnimSpeed);
-        }
     }
 
     private void v_ChooseTarget()
@@ -88,7 +80,10 @@ public class EnemyMovementController : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-
+        if (A_SpriteAnimator != null)
+        {
+            A_SpriteAnimator.SetFloat("anim_speed", f_AnimSpeed);
+        }
         if (Time.time > f_Retargeting)
         {
             f_Retargeting = Time.time + f_RetargetingTime;
@@ -122,7 +117,9 @@ public class EnemyMovementController : MonoBehaviour
 
     private void OnDestroy()
     {
-        
+        GameObject go = GameObject.FindGameObjectWithTag("GameController");
+        GameManagerLv2_Pestera gm = go.GetComponent<GameManagerLv2_Pestera>();
+        if (gm != null) { gm.v_MummyDed(); }
     }
 
     private void v_FollowPlayer()

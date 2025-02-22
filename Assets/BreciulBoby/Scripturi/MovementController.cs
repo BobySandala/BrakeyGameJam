@@ -15,6 +15,7 @@ public class MovementController : MonoBehaviour
     public KeyCode moveForward = KeyCode.W;
     public KeyCode moveBackward = KeyCode.S;
     public KeyCode attackKey = KeyCode.Space;
+    public KeyCode changeWeaponKey = KeyCode.Q;
     private CharacterController controller;
     private Vector3 velocity;
     private KeyCode lastPressedKey;
@@ -41,11 +42,16 @@ public class MovementController : MonoBehaviour
     private bool b_AttackHeld;
     private float f_ChargeStartTime;
     public float f_BowFullCharge = 1;
+    private int i_ChargeFrame;
 
     public Sprite[] SpritesBowUp;
     public Sprite[] SpritesBowDown;
     public Sprite[] SpritesBowLeft;
     public Sprite[] SpritesBowRight;
+
+    public Sajatha sajatha;
+
+    public bool b_BouEquipped;
     void Start()
     {
         
@@ -66,6 +72,7 @@ public class MovementController : MonoBehaviour
 
     void Update()
     {
+        if (!b_BouEquipped) { i_EquippedWeapon = 0; }
         if (b_Freeze)
         {
             animator.SetFloat("anim_speed", 0);
@@ -75,18 +82,27 @@ public class MovementController : MonoBehaviour
             animator.SetFloat("anim_speed", 0.5f);
         }
 
+        if (uInt_HP <= 0)
+        {
+            animator.SetTrigger("moarte");
+            return;
+        }
+
         float moveX = 0f;
         float moveZ = 0f;
 
         if (Input.GetKeyDown(moveLeft) && CanAttack) { animator.SetTrigger("stanga"); GetComponent<SpriteRenderer>().flipX = false; }
         if (Input.GetKeyDown(moveRight) && CanAttack) { animator.SetTrigger("dreapta"); GetComponent<SpriteRenderer>().flipX = false; }
+        if (Input.GetKeyDown(moveForward) && CanAttack) { animator.SetTrigger("sus"); GetComponent<SpriteRenderer>().flipX = false; }
+        if (Input.GetKeyDown(moveBackward) && CanAttack) { animator.SetTrigger("jos"); GetComponent<SpriteRenderer>().flipX = false; }
        
+        if (Input.GetKeyDown(changeWeaponKey)) { i_EquippedWeapon = (i_EquippedWeapon + 1) % 2; }
         if (Input.GetKey(moveLeft)) { moveX = -1f; lastPressedKey = moveLeft; }
         if (Input.GetKey(moveRight)) { moveX = 1f; lastPressedKey = moveRight; }
         if (Input.GetKey(moveForward)) { moveZ = 1f; lastPressedKey = moveForward; }
         if (Input.GetKey(moveBackward)) { moveZ = -1f; lastPressedKey = moveBackward; }
         if (Input.GetKeyDown(attackKey) && CanAttack) { Attack(); b_AttackHeld = true; f_ChargeStartTime = Time.time; }
-        if (Input.GetKeyUp(attackKey)) { b_AttackHeld = false; }
+        if (Input.GetKeyUp(attackKey)) { b_AttackHeld = false; SpawnSajatha();  GetComponent<Animator>().enabled = true; }
 
         if (b_AttackHeld) { v_ChargeBowle(); }
 
@@ -118,7 +134,24 @@ public class MovementController : MonoBehaviour
         }
 
     }
+    private void SpawnSajatha()
+    {
+        if (!b_BouEquipped) { return; }
+        if (i_EquippedWeapon != 1) { return; }
+        if (i_ChargeFrame < 5) { return; }
 
+        float mouseX = Input.mousePosition.x - Screen.width / 2;
+        float mouseY = Input.mousePosition.y - Screen.height / 2;
+
+        //complete here to determine f_Angle
+        float f_Angle = Mathf.Atan2(mouseX, mouseY) * Mathf.Rad2Deg;
+
+        Quaternion v3_Direction = Quaternion.Euler(0, f_Angle, 0);
+        Vector3 v3_StartPosition = transform.position;
+        Sajatha sajathaInstance = Instantiate(sajatha, v3_StartPosition, v3_Direction);
+        if (sajathaInstance != null)
+        print("sajatha spaunata");
+    }
     public void TakeDamage(GameObject GO_source)
     {
         print("player a luat damage");
@@ -171,16 +204,37 @@ public class MovementController : MonoBehaviour
 
     private void v_ChargeBowle()
     {
-        if (i_EquippedWeapon == 1)
-        {
-            float f_ChargingTime = Time.time - f_ChargeStartTime;
-            float f_ChargingPercent = f_ChargingTime / f_BowFullCharge;
-            int i_ChargeFrame;
-            if (f_ChargingPercent >= 1) { f_ChargingPercent = 0.99f; }
-            i_ChargeFrame = Mathf.FloorToInt(f_ChargingPercent * 6);
-            print("charge boule " + i_ChargeFrame);
+        if (!b_BouEquipped) { return; }
+        if  (i_EquippedWeapon != 1) { return; }
 
-            
+        GetComponent<Animator>().enabled = false;
+        float f_ChargingTime = Time.time - f_ChargeStartTime;
+        float f_ChargingPercent = f_ChargingTime / f_BowFullCharge;
+        
+        if (f_ChargingPercent >= 1) { f_ChargingPercent = 0.99f; }
+        i_ChargeFrame = Mathf.FloorToInt(f_ChargingPercent * 6);
+        print("charge boule " + i_ChargeFrame);
+
+        switch(i_MouseCadran())
+        {
+            case 0:
+                //stanga
+                GetComponent<SpriteRenderer>().sprite = SpritesBowLeft[i_ChargeFrame];
+                break;
+            case 1:
+                //dreapta
+                GetComponent<SpriteRenderer>().sprite = SpritesBowRight[i_ChargeFrame];
+                break;
+            case 2:
+                //sus
+                GetComponent<SpriteRenderer>().sprite = SpritesBowUp[i_ChargeFrame];
+                break;
+            case 3:
+                //jos
+                GetComponent<SpriteRenderer>().sprite = SpritesBowDown[i_ChargeFrame];
+                break;
+            default:
+                break;
         }
     }
 
@@ -214,6 +268,7 @@ public class MovementController : MonoBehaviour
             CanAttack = false;
             ArmamentSwoosh[i_MouseCadran()].SetActive(true);
             ArmamentSwoosh[i_MouseCadran()].GetComponent<BoxCollider>().enabled = true;
+            if (i_MouseCadran() == 0) { GetComponent<SpriteRenderer>().flipX = true; }
             Physics.SyncTransforms(); // Force Unity to recognize the new collider
 
             StartCoroutine(DelayAndSwooshInactive(SwooshOnTime));

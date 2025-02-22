@@ -100,6 +100,37 @@ MonoBehaviour:
   - {fileID: 22731530000396062}
   - {fileID: 22731530906756704}
   - {fileID: 22731530609682126}
+  i_EquippedWeapon: 1
+  f_BowFullCharge: 1
+  SpritesBowUp:
+  - {fileID: 2057793346, guid: a8ae0df79fe9215428ce57e1172e48f8, type: 3}
+  - {fileID: -358969124, guid: a8ae0df79fe9215428ce57e1172e48f8, type: 3}
+  - {fileID: 1643507786, guid: a8ae0df79fe9215428ce57e1172e48f8, type: 3}
+  - {fileID: 2015192888, guid: a8ae0df79fe9215428ce57e1172e48f8, type: 3}
+  - {fileID: -1796449896, guid: a8ae0df79fe9215428ce57e1172e48f8, type: 3}
+  - {fileID: -1494105862, guid: a8ae0df79fe9215428ce57e1172e48f8, type: 3}
+  SpritesBowDown:
+  - {fileID: -1703978285, guid: f77a1de3c9dfcc346a87a0d7685fe8fa, type: 3}
+  - {fileID: -2006496340, guid: f77a1de3c9dfcc346a87a0d7685fe8fa, type: 3}
+  - {fileID: -1913174285, guid: f77a1de3c9dfcc346a87a0d7685fe8fa, type: 3}
+  - {fileID: -226979365, guid: f77a1de3c9dfcc346a87a0d7685fe8fa, type: 3}
+  - {fileID: 2105367613, guid: f77a1de3c9dfcc346a87a0d7685fe8fa, type: 3}
+  - {fileID: -825553515, guid: f77a1de3c9dfcc346a87a0d7685fe8fa, type: 3}
+  SpritesBowLeft:
+  - {fileID: -1225189964, guid: 8bd37de707aaf5448b305fd45981bb03, type: 3}
+  - {fileID: -808872204, guid: 8bd37de707aaf5448b305fd45981bb03, type: 3}
+  - {fileID: -1096762398, guid: 8bd37de707aaf5448b305fd45981bb03, type: 3}
+  - {fileID: 1550554891, guid: 8bd37de707aaf5448b305fd45981bb03, type: 3}
+  - {fileID: -989494735, guid: 8bd37de707aaf5448b305fd45981bb03, type: 3}
+  - {fileID: -2074133526, guid: 8bd37de707aaf5448b305fd45981bb03, type: 3}
+  SpritesBowRight:
+  - {fileID: -1703978285, guid: f77a1de3c9dfcc346a87a0d7685fe8fa, type: 3}
+  - {fileID: -2006496340, guid: f77a1de3c9dfcc346a87a0d7685fe8fa, type: 3}
+  - {fileID: -1913174285, guid: f77a1de3c9dfcc346a87a0d7685fe8fa, type: 3}
+  - {fileID: -226979365, guid: f77a1de3c9dfcc346a87a0d7685fe8fa, type: 3}
+  - {fileID: 2105367613, guid: f77a1de3c9dfcc346a87a0d7685fe8fa, type: 3}
+  - {fileID: -825553515, guid: f77a1de3c9dfcc346a87a0d7685fe8fa, type: 3}
+  sajatha: {fileID: 1535831114695387480, guid: b1a9156d2ecb3a648915788d1707d8c5, type: 3}
 --- !u!212 &6466540958111805497
 SpriteRenderer:
   m_ObjectHideFlags: 0

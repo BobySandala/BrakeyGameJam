@@ -28,6 +28,8 @@ public class lv2_UI : MonoBehaviour
     private int currentSprite;
     public Sprite[] SlepNuth_Sprites;
     public Image SlepNuth_Sprite;
+
+    public bool b_LineByLine = false;
     void Start()
     {
         Debug.Log("Start called on " + gameObject.name);
@@ -96,15 +98,9 @@ public class lv2_UI : MonoBehaviour
     void Update()
     {
 
-        print("coxare maxima");
+        //print("coxare maxima");
         
         //PressSpace.text = pressSpaceText;
-
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            spacePressed = true;
-        }
 
         if (writing_message)
         {
@@ -123,8 +119,8 @@ public class lv2_UI : MonoBehaviour
                     if (current_message == messages.Length - 1)
                     {
                         taceSlapnut = true;
-                    } 
-                    //NextMessage();
+                    }
+                    if (b_LineByLine) { NextMessage(); }
                 }
             }
         }

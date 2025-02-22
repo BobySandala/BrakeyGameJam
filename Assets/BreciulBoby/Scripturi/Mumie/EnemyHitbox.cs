@@ -8,16 +8,15 @@ public class EnemyHitbox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //print("mumia ceva coliziune");
-        //print($"Collided with: {other.gameObject.name}, Tag: {other.gameObject.tag}");
-
         if (other.CompareTag("Armament"))
         {
-            //print("mumia este atinsa cred");
-            if (MC_controller != null)
-            {
-                MC_controller.v_TakeDamage();
-            }
+            if (MC_controller != null) { MC_controller.v_TakeDamage(); }
+        }
+
+        if (other.CompareTag("Sajatha"))
+        {
+            if (MC_controller != null) { MC_controller.v_TakeSajathaDamage(); }
+            print("sajatha damage puternic");
         }
     }
 }

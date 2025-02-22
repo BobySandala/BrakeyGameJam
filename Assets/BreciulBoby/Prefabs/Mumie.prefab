@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 9134411472872698297}
   m_Layer: 0
   m_Name: Mumie
-  m_TagString: Untagged
+  m_TagString: Mumie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -240,8 +240,8 @@ Transform:
   m_GameObject: {fileID: 9134411472872698302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.774, y: 1.14, z: 16.147}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9134411473543330613}
   - {fileID: 9134411473183309295}
@@ -275,6 +275,10 @@ MonoBehaviour:
   i_CurrentAnimState: 0
   f_StopRange: 0.6
   f_DeathLengthTime: 1
+  s_TargetTags:
+  - Player
+  f_RetargetingTime: 1
+  b_Freeze: 0
 --- !u!143 &9134411472872698299
 CharacterController:
   m_ObjectHideFlags: 0
