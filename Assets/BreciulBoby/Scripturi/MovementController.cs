@@ -52,6 +52,7 @@ public class MovementController : MonoBehaviour
     public Sajatha sajatha;
 
     public bool b_BouEquipped;
+    private bool b_Ded = false;
     void Start()
     {
         
@@ -82,10 +83,16 @@ public class MovementController : MonoBehaviour
             animator.SetFloat("anim_speed", 0.5f);
         }
 
-        if (uInt_HP <= 0)
+        if (uInt_HP <= 0 && !b_Ded)
         {
             animator.SetTrigger("moarte");
+            b_Ded = true;
             return;
+        }
+        if (b_Ded && uInt_HP > 0)
+        {
+            b_Ded = false;
+            animator.SetTrigger("invie");
         }
 
         float moveX = 0f;
@@ -154,6 +161,7 @@ public class MovementController : MonoBehaviour
     }
     public void TakeDamage(GameObject GO_source)
     {
+        if (uInt_HP <= 0) { return; }
         print("player a luat damage");
         EnemyAttackHitbox hitbox = GO_source.GetComponent<EnemyAttackHitbox>();
         hitbox.DecativateHitbox();
@@ -162,6 +170,7 @@ public class MovementController : MonoBehaviour
 
     public void TakeDamage()
     {
+        if (uInt_HP <= 0) { return; }
         uInt_HP--;
     }
 

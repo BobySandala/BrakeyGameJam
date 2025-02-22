@@ -24,6 +24,8 @@ public class EnemyMovementController : MonoBehaviour
     private Vector3 v3_MovingDirection;
     private Vector3 v3_LastPosition;
     private Vector3 v3_velocity;
+    [SerializeField]
+    private Vector3 v3_InitialPosition;
     private CharacterController CC_controller;
 
     //cheastii pentru animator
@@ -48,10 +50,30 @@ public class EnemyMovementController : MonoBehaviour
 
     protected void Start()
     {
+        v3_InitialPosition = transform.position;
         v3_LastPosition = transform.position;
         CC_controller = GetComponent<CharacterController>();
         v_ChooseTarget();
         //animator = GetComponent<Animator>();
+    }
+    public void v_GoBackToInitialPosition()
+    {
+        StartCoroutine(MoveOverTime(transform.position, v3_InitialPosition, 2f));
+    }
+
+    IEnumerator MoveOverTime(Vector3 start, Vector3 end, float time)
+    {
+        float elapsedTime = 0;
+
+        while (elapsedTime < time)
+        {
+            float t = elapsedTime / time; // Normalize time
+            transform.position = Vector3.Lerp(start, end, t);
+            elapsedTime += Time.deltaTime;
+            yield return null; // Wait for next frame
+        }
+
+        transform.position = end; // Ensure it ends exactly at the target
     }
 
     private void v_ChooseTarget()
@@ -118,8 +140,14 @@ public class EnemyMovementController : MonoBehaviour
     private void OnDestroy()
     {
         GameObject go = GameObject.FindGameObjectWithTag("GameController");
-        GameManagerLv2_Pestera gm = go.GetComponent<GameManagerLv2_Pestera>();
-        if (gm != null) { gm.v_MummyDed(); }
+        if (go != null)
+        {
+            GameManagerLv2_Pestera gm = go.GetComponent<GameManagerLv2_Pestera>();
+            if (gm != null)
+            {
+                gm.v_MummyDed();
+            }
+        }
     }
 
     private void v_FollowPlayer()

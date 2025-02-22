@@ -47,6 +47,15 @@ public class toggleDedPng : MonoBehaviour
             number_of_ded++;
         }
     }
+    public void v_Refresh()
+    {
+        number_of_ded = 0;
+        for (int i = 0; i < dedOralIve.Length; i++)
+        {
+            dedOralIve[i] = false;
+            frame_index[i] = 0;
+        }
+    }
 
     // Update is called once per frame
     void Update() 

@@ -6,7 +6,10 @@ public class lv2_UI_pestra : MonoBehaviour
 {
     // Start is called before the first frame update
     public lv2_UI aparitieSlepNath1;
+    public Phase_1_Controller_LV_1 weapon_UI;
 
+    public lv2_UI gameOver_UI;
+    public lv2_UI gamePassed_UI;
     void Start()
     {
         
@@ -37,7 +40,51 @@ public class lv2_UI_pestra : MonoBehaviour
     public bool b_TaceSlepNath()
     {
         if (aparitieSlepNath1.isActiveAndEnabled) { return aparitieSlepNath1.taceSlapnut; }
+        if (gameOver_UI.isActiveAndEnabled) { return gameOver_UI.taceSlapnut; }
+        if (gamePassed_UI.isActiveAndEnabled) { return gamePassed_UI.taceSlapnut; }
 
         return false;
+    }
+    public void v_SetWeapon1()
+    {
+        if (weapon_UI != null) { weapon_UI.v_SetWeapon1(); }
+    }
+    public void v_SetWeapon2()
+    {
+        if (weapon_UI != null) { weapon_UI.v_SetWeapon2(); }
+    }
+    public void v_RefillUIHP()
+    {
+        if (weapon_UI != null) { weapon_UI.v_ResetHP(); }
+    }
+    public void v_TakeDmg()
+    {
+        if (weapon_UI != null) { weapon_UI.DedInima(); }
+    }
+    public void v_gameOver()
+    {
+        if (gameOver_UI == null) { return; }
+        if (weapon_UI == null) { return; }
+        if (gamePassed_UI == null) { return; }
+        if (aparitieSlepNath1 == null) { return; }
+
+        gameOver_UI.gameObject.SetActive(true);
+        gameOver_UI.AFostSetatActiv();
+        weapon_UI.gameObject.SetActive(false);
+        gamePassed_UI.gameObject.SetActive(false);
+        aparitieSlepNath1.gameObject.SetActive(false);
+    }
+    public void v_gamePassed()
+    {
+        if (gameOver_UI == null) { return; }
+        if (weapon_UI == null) { return; }
+        if (gamePassed_UI == null) { return; }
+        if (aparitieSlepNath1 == null) { return; }
+
+        gamePassed_UI.gameObject.SetActive(true);
+        gamePassed_UI.AFostSetatActiv();
+        weapon_UI.gameObject.SetActive(false);
+        gameOver_UI.gameObject.SetActive(false);
+        aparitieSlepNath1.gameObject.SetActive(false);
     }
 }

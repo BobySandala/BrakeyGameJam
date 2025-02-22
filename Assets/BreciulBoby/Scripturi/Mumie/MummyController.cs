@@ -6,7 +6,7 @@ public class MummyController : EnemyMovementController
 {
     // Start is called before the first frame update
     public bool b_Freeze;
-
+    
     void Start()
     {
         base.Start();

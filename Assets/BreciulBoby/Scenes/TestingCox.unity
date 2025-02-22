@@ -785,13 +785,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22731529876028761, guid: ccd5f1499bbb40b409fbf1460e24b711,
         type: 3}
+      propertyPath: uInt_HP
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 22731529876028761, guid: ccd5f1499bbb40b409fbf1460e24b711,
+        type: 3}
       propertyPath: SwooshOnTime
       value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 22731529876028761, guid: ccd5f1499bbb40b409fbf1460e24b711,
         type: 3}
       propertyPath: i_EquippedWeapon
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22731529876028836, guid: ccd5f1499bbb40b409fbf1460e24b711,
         type: 3}
@@ -1503,6 +1508,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 9080788254580699109, guid: 7780a5c90b5648242ba07f6ce7cd40c7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9080788254580699110, guid: 7780a5c90b5648242ba07f6ce7cd40c7,
         type: 3}
       propertyPath: m_RootOrder
@@ -1662,6 +1672,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mumie
+      objectReference: {fileID: 0}
+    - target: {fileID: 9134411472872698302, guid: 16d0fbdaa3874b1468e3ac775bde645b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16d0fbdaa3874b1468e3ac775bde645b, type: 3}

@@ -7,6 +7,8 @@ public class Phase_1_Controller_LV_1 : MonoBehaviour
     public toggleDedPng Lupi;
     public toggleDedPng Gaini;
     public toggleDedPng Inimi;
+    public toggleWeaponUI Weapon;
+
 
     public void DedLup()
     {
@@ -31,5 +33,19 @@ public class Phase_1_Controller_LV_1 : MonoBehaviour
             Inimi.Died();
         }
     }
-
+    public void v_ResetHP()
+    {
+        if (Inimi != null)
+        {
+            Inimi.v_Refresh();
+        }
+    }
+    public void v_SetWeapon1()
+    {
+        if (Weapon != null) { Weapon.v_SetWeapon1(); }
+    }
+    public void v_SetWeapon2()
+    {
+        if (Weapon != null) { Weapon.v_SetWeapon2(); }
+    }
 }
