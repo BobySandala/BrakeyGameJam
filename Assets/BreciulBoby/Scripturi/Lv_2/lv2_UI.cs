@@ -28,6 +28,7 @@ public class lv2_UI : MonoBehaviour
     private int currentSprite;
     public Sprite[] SlepNuth_Sprites;
     public Image SlepNuth_Sprite;
+    public float f_delayTime = 1;
 
     public bool b_LineByLine = false;
     void Start()
@@ -93,7 +94,11 @@ public class lv2_UI : MonoBehaviour
     //void Start() { Debug.Log("Start called on " + gameObject.name); }
     void OnEnable() { Debug.Log("OnEnable called on " + gameObject.name); }
 
-
+    private IEnumerator WaitBeforeNextMessage(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        NextMessage();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -119,8 +124,12 @@ public class lv2_UI : MonoBehaviour
                     if (current_message == messages.Length - 1)
                     {
                         taceSlapnut = true;
+                    } else
+                    if (b_LineByLine)
+                    {
+                        StartCoroutine(WaitBeforeNextMessage(f_delayTime));
+                        //NextMessage(); 
                     }
-                    if (b_LineByLine) { NextMessage(); }
                 }
             }
         }

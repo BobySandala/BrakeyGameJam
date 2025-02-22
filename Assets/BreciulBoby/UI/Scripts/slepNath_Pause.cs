@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
-using UnityEditor.VersionControl;
+//using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +20,8 @@ public class slepNath_Pause : MonoBehaviour
     public TextMeshProUGUI textBubbleText;
     public Image SlepNathSprite;
     public string[] slepNath_Lines;
+    public lv1SoudController SoundController;
+    private bool b_SlepNatheTheme = false;
     //for write speed
     public float pause = 0.1f;
     //for frame rate
@@ -85,7 +87,12 @@ public class slepNath_Pause : MonoBehaviour
     void part2()
     {
         print("UI: a intrat in part2");
-        
+        if (!b_SlepNatheTheme)
+        {
+            SoundController.gameObject.SetActive(true);
+            SoundController.v_SlepNathTheme();
+            b_SlepNatheTheme = true;
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {

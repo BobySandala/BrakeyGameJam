@@ -25,6 +25,10 @@ public class GameManagerLv2_Pestera : MonoBehaviour
     [SerializeField]
     private Vector3 playerInitialPosition;
 
+    public AudioSource music;
+    public AudioClip lvMuzic;
+    public AudioClip slapNathTheme;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +37,10 @@ public class GameManagerLv2_Pestera : MonoBehaviour
 
         if (mumie1 != null) {mumie1InitialPosition = mumie1.transform.position; }
         if (mumie2 != null) {mumie2InitialPosition = mumie2.transform.position; }
+
+        music.clip = lvMuzic;
+        music.loop = true;
+        music.Play();
     }
 
     // Update is called once per frame
@@ -96,6 +104,8 @@ public class GameManagerLv2_Pestera : MonoBehaviour
             mumie1.v_GoBackToInitialPosition();
             mumie2.v_GoBackToInitialPosition();
 
+            music.clip = slapNathTheme;
+            music.Play();
         }
     }
     private void v_Phase2()
@@ -111,12 +121,14 @@ public class GameManagerLv2_Pestera : MonoBehaviour
             UI_Canvas.v_DisparitieSlepNath1();
 
             player.uInt_HP = 3;
-            player.v_SetDed(false);
+            //player.v_SetDed(false);
             player.b_BouEquipped = true;
             UI_Canvas.v_RefillUIHP();
             UI_Canvas.v_EquipBow();
                 
             player.transform.position = playerInitialPosition;
+            music.clip = lvMuzic;
+            music.Play();
         }
     }
     private void v_freezeMummies(bool freeze)

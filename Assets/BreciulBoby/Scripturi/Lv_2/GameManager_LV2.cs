@@ -9,6 +9,7 @@ public class GameManager_LV2 : MonoBehaviour
     public MovementController player;
     public GameObject quickSilver;
     public lv2_UI_Controller UI_Controller;
+    public AudioSource wind;
 
     [SerializeField]
     private Vector3 playerPositionAtContact;
@@ -30,10 +31,15 @@ public class GameManager_LV2 : MonoBehaviour
 
     public float voidDepth = 0.5f;
 
+    AsyncOperation async;
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        async = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        async.allowSceneActivation = false;
     }
 
     // Update is called once per frame
@@ -42,20 +48,21 @@ public class GameManager_LV2 : MonoBehaviour
         if (gameEnded) GameEnded();
         if (fellOff) FellOff();
 
-        
+
         if (QS)
         {
+            wind.volume = 0.3f;
             player.transform.position += new Vector3(0, -graity_in_sand, 0);
             if (keyIndex < KeyNames.Length)
             {
-                UI_Controller.SetInstructionText("");
+                UI_Controller.SetInstructionText("key to press:" + KeyNames[keyIndex].ToString());
                 //print("key to press:" +  KeyNames[keyIndex].ToString());
                 //print("apasat de: " + keyPresses + " ori");
                 if (Input.GetKeyDown(KeyNames[keyIndex]))
                 {
                     print("apasat" + KeyNames[keyIndex]);
                     player.transform.position = (playerPositionAtContact + player.transform.position) / 2;
-                    UI_Controller.NextLine();
+                    //UI_Controller.NextLine();
                     keyPresses++;
                     if (keyPresses >= numberOfKeyPresses)
                     {
@@ -63,14 +70,16 @@ public class GameManager_LV2 : MonoBehaviour
                         keyPresses = 0;
                     }
                 }
-            } else
+            }
+            else
             {
                 gameEnded = true;
                 //UI_Controller.SetInstructionText("congrulations");
                 //UI_Controller.GamePassed();
                 QS = false;
             }
-        } else
+        }
+        else
         {
 
         }
@@ -107,7 +116,7 @@ public class GameManager_LV2 : MonoBehaviour
 
         if (previousIndex >= 0) // Ensure it's not out of bounds
         {
-            SceneManager.LoadScene(previousIndex);
+            async.allowSceneActivation = true;
         }
         else
         {
@@ -128,7 +137,7 @@ public class GameManager_LV2 : MonoBehaviour
         graity_in_sand = 0;
     }
 
-    public void QS_Activated() 
+    public void QS_Activated()
     {
         print("QS");
         QS = true;

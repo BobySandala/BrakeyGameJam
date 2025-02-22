@@ -48,6 +48,7 @@ public class EnemyMovementController : MonoBehaviour
     private float f_Retargeting;
     public float f_RetargetingTime = 1;
 
+    public OneShotSounds oneShotSounds;
     protected void Start()
     {
         v3_InitialPosition = transform.position;
@@ -164,6 +165,7 @@ public class EnemyMovementController : MonoBehaviour
             v3_velocity.y = -2f;
         }
         CC_controller.Move(v3_velocity * Time.deltaTime);
+        
 
         float f_Distance = Vector3.Distance(transform.position, GO_player.transform.position);
         Vector3 v3_PlayerDirection = GO_player.transform.position - transform.position;

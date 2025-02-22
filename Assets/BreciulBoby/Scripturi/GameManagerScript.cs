@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental;
+//using UnityEditor.Experimental;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class GameManagerScript : MonoBehaviour
 {
+    public GameObject ambiental;
+    public GameObject musica;
+
     public GameObject guiCanvas;
     [SerializeField]
     private int gainiMoarte = 0;
@@ -29,22 +32,29 @@ public class GameManagerScript : MonoBehaviour
     private bool isGamePassed = false;
     private int numarGainiMoarte = 0;
     public MovementController player;
-    
+
+    private int i_lupiVi = 2;
+    public lv1SoudController SoundController;
 
     // Start is called before the first frame update
     void Start()
     {
         HP = player.uInt_HP;
         totalLupi = GameObject.FindGameObjectsWithTag("Lup").Length;
+        SoundController.v_FirstPhase();
     }
 
     // Update is called once per frame
     void Update()
     {
+        i_lupiVi = GameObject.FindGameObjectsWithTag("Lup").Length;
         if (totalLupi > GameObject.FindGameObjectsWithTag("Lup").Length)
         {
+            for (int i = 0; i < totalLupi - i_lupiVi; i++)
+            {
+                LupMort();
+            }
             totalLupi = GameObject.FindGameObjectsWithTag("Lup").Length;
-            LupMort();
         }
 
         if (Input.GetKeyDown(anfriz))
@@ -74,6 +84,10 @@ public class GameManagerScript : MonoBehaviour
                 }
                 else
                 {
+                    ambiental.SetActive(true);
+                    musica.SetActive(true);
+                    SoundController.v_SecondPhase();
+
                     Time.timeScale = 1;
                     InfecteazaGainaRendam();
                     guiCanvas.GetComponent<UI_Controller_LV1>().NextPhase();
@@ -143,10 +157,13 @@ public class GameManagerScript : MonoBehaviour
     {
         lupiMorti++;
         guiCanvas.GetComponent<UI_Controller_LV1>().LupDied();
-        if (lupiMorti >= 2)
+        if (i_lupiVi <= 0)
         {
             guiCanvas.GetComponent<UI_Controller_LV1>().NextPhase();
             frezzeAll = true;
+            ambiental.SetActive(false);
+            musica.SetActive(false);
+            //SoundController.v_SlepNathTheme();
             //Time.timeScale = 0;
         }
     }

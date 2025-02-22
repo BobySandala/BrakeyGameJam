@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor;
+//using UnityEditor;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
 public class MovementController : MonoBehaviour
 {
+    public stepSound StepSound;
+    public OneShotSounds oneShotSounds;
+    public ArmamentSounds armamentSounds;
+
     public float speed = 5f;
     public float gravity = 9.81f;
     public float slopeLimit = 45.5f;
@@ -52,6 +56,7 @@ public class MovementController : MonoBehaviour
     public Sajatha sajatha;
 
     public bool b_BouEquipped;
+    [SerializeField]
     private bool b_Ded = false;
     void Start()
     {
@@ -73,10 +78,21 @@ public class MovementController : MonoBehaviour
 
     void Update()
     {
-        if (b_Ded) { return; }
+        if (b_Ded && uInt_HP > 0)
+        {
+            b_Ded = false;
+            oneShotSounds.v_Revive();
+            animator.SetTrigger("invie");
+        }
+        if (b_Ded) 
+        {
+            StepSound.v_SoundOff();
+            return; 
+        }
         if (!b_BouEquipped) { i_EquippedWeapon = 0; }
         if (b_Freeze)
         {
+            StepSound.v_SoundOff();
             animator.SetFloat("anim_speed", 0);
             return;
         } else
@@ -86,15 +102,12 @@ public class MovementController : MonoBehaviour
 
         if (uInt_HP <= 0 && !b_Ded)
         {
+            oneShotSounds.v_DeathSound();
             animator.SetTrigger("moarte");
             b_Ded = true;
             return;
         }
-        if (b_Ded && uInt_HP > 0)
-        {
-            b_Ded = false;
-            animator.SetTrigger("invie");
-        }
+        
 
         float moveX = 0f;
         float moveZ = 0f;
@@ -104,18 +117,26 @@ public class MovementController : MonoBehaviour
         if (Input.GetKeyDown(moveForward) && CanAttack) { animator.SetTrigger("sus"); GetComponent<SpriteRenderer>().flipX = false; }
         if (Input.GetKeyDown(moveBackward) && CanAttack) { animator.SetTrigger("jos"); GetComponent<SpriteRenderer>().flipX = false; }
        
-        if (Input.GetKeyDown(changeWeaponKey)) { i_EquippedWeapon = (i_EquippedWeapon + 1) % 2; }
+        if (Input.GetKeyDown(changeWeaponKey)) { i_EquippedWeapon = (i_EquippedWeapon + 1) % 2; armamentSounds.v_ChangeWeapon(); }
         if (Input.GetKey(moveLeft)) { moveX = -1f; lastPressedKey = moveLeft; }
         if (Input.GetKey(moveRight)) { moveX = 1f; lastPressedKey = moveRight; }
         if (Input.GetKey(moveForward)) { moveZ = 1f; lastPressedKey = moveForward; }
         if (Input.GetKey(moveBackward)) { moveZ = -1f; lastPressedKey = moveBackward; }
         if (Input.GetKeyDown(attackKey) && CanAttack) { Attack(); b_AttackHeld = true; f_ChargeStartTime = Time.time; }
-        if (Input.GetKeyUp(attackKey)) { b_AttackHeld = false; SpawnSajatha();  GetComponent<Animator>().enabled = true; }
-
+        if (Input.GetKeyDown(attackKey) && CanAttack && i_EquippedWeapon == 1) { armamentSounds.v_ChargeBow(); }
+        if (Input.GetKeyUp(attackKey)) { b_AttackHeld = false; SpawnSajatha(); GetComponent<Animator>().enabled = true; armamentSounds.v_StopSound(); }
+        
         if (b_AttackHeld) { v_ChargeBowle(); }
 
         Vector3 move = transform.right * moveX + transform.forward * moveZ;
         
+        if (move != Vector3.zero)
+        {
+            StepSound.v_SoundOn();
+        } else
+        {
+            StepSound.v_SoundOff();
+        }
         controller.Move(move.normalized * speed * Time.deltaTime);
 
         if (!controller.isGrounded)
@@ -152,6 +173,7 @@ public class MovementController : MonoBehaviour
         if (i_EquippedWeapon != 1) { return; }
         if (i_ChargeFrame < 5) { return; }
 
+        armamentSounds.v_ShootArrow();
         float mouseX = Input.mousePosition.x - Screen.width / 2;
         float mouseY = Input.mousePosition.y - Screen.height / 2;
 
@@ -167,6 +189,7 @@ public class MovementController : MonoBehaviour
     public void TakeDamage(GameObject GO_source)
     {
         if (uInt_HP <= 0) { return; }
+        oneShotSounds.v_TakeDamageSound();
         print("player a luat damage");
         EnemyAttackHitbox hitbox = GO_source.GetComponent<EnemyAttackHitbox>();
         hitbox.DecativateHitbox();
@@ -176,6 +199,7 @@ public class MovementController : MonoBehaviour
     public void TakeDamage()
     {
         if (uInt_HP <= 0) { return; }
+        oneShotSounds.v_TakeDamageSound();
         uInt_HP--;
     }
 
@@ -220,6 +244,7 @@ public class MovementController : MonoBehaviour
     {
         if (!b_BouEquipped) { return; }
         if  (i_EquippedWeapon != 1) { return; }
+
 
         GetComponent<Animator>().enabled = false;
         float f_ChargingTime = Time.time - f_ChargeStartTime;
@@ -277,6 +302,8 @@ public class MovementController : MonoBehaviour
     {
         if (i_EquippedWeapon == 0)
         {
+            armamentSounds.v_SwooshSound();
+            oneShotSounds.v_AttackSound();
             animator.SetTrigger("attack");
             //Debug.Log("Attack performed! Last pressed key: " + lastPressedKey);
             CanAttack = false;

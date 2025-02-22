@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class intra_in_lv_1 : MonoBehaviour
 {
     public GameObject canvas;
+    private bool b_PlayerInside;
+    public AudioClip teleport;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,7 @@ public class intra_in_lv_1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!b_PlayerInside) { return; }
         if (Input.GetKeyDown(KeyCode.Space)/* && canvas.GetComponent<village_UI>().CanEnterLv1()*/)
         {
             print("cox");
@@ -25,6 +28,7 @@ public class intra_in_lv_1 : MonoBehaviour
 
             if (nextSceneIndex >= 0) // Ensure it's not out of bounds
             {
+                GetComponent<AudioSource>().PlayOneShot(teleport);
                 SceneManager.LoadScene(nextSceneIndex);
             }
             else
@@ -38,6 +42,7 @@ public class intra_in_lv_1 : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            b_PlayerInside = true;
             canvas.GetComponent<village_UI>().ActivateText();
         }
     }
@@ -46,6 +51,7 @@ public class intra_in_lv_1 : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            b_PlayerInside = false;
             canvas.GetComponent<village_UI>().DeactivateText();
         }
     }

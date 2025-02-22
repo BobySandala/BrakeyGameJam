@@ -795,6 +795,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22731529876028761, guid: ccd5f1499bbb40b409fbf1460e24b711,
         type: 3}
+      propertyPath: b_BouEquipped
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22731529876028761, guid: ccd5f1499bbb40b409fbf1460e24b711,
+        type: 3}
       propertyPath: i_EquippedWeapon
       value: 0
       objectReference: {fileID: 0}
@@ -882,6 +887,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2088564133955443378, guid: ccd5f1499bbb40b409fbf1460e24b711,
+        type: 3}
+      propertyPath: swooshSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c1c7ec0185ad75149a34cbb5055f5600, type: 3}
+    - target: {fileID: 4493162836553033455, guid: ccd5f1499bbb40b409fbf1460e24b711,
+        type: 3}
+      propertyPath: AttackSound
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccd5f1499bbb40b409fbf1460e24b711, type: 3}

@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class GainaController : EnemyController
 {
@@ -23,7 +25,16 @@ public class GainaController : EnemyController
     public bool isInfected = false;
     public Sprite gainaNormala;
     public Sprite gainaNebuna;
+    [SerializeField]
+    private bool b_Speriata;
+    private bool b_GainaMoarta;
 
+    [SerializeField]
+    private Vector3 DirectiaInCareFuge;
+
+    private float f_DestroyTimer;
+    private float f_TeleportTimer;
+    private bool b_Teleport = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +42,6 @@ public class GainaController : EnemyController
         base.Start();
         base.setPatrolPointInRange();
         viatza = 10f;
-
 
         if (gameManager != null)
         {
@@ -49,15 +59,31 @@ public class GainaController : EnemyController
     void Update()
     {
         base.Update();
-
-        if (isPatrolling)
+        if (b_GainaMoarta)
         {
-            base.speed = patrolSpeed;
+            if (b_Teleport)
+            {
+                if (Time.time > f_DestroyTimer + 1)
+                {
+                    Destroy(gameObject);
+                }
+            } else if (Time.time > f_TeleportTimer + 0.1f)
+            {
+                transform.position = new Vector3(1000, 1000, 1000);
+                b_Teleport = true;
+                f_DestroyTimer = Time.time;
+            }
+            return;
+        }
+        v_SearchAllEnemies();
+        if (!b_Speriata)
+        {
+            //base.speed = patrolSpeed;
             base.Patrol();
         }
         else
         {
-            base.speed = fujeSpeed;
+            //base.speed = fujeSpeed;
         }
         
         spriteRenderer.sprite = (isInfected) ? gainaNebuna : gainaNormala;
@@ -75,9 +101,43 @@ public class GainaController : EnemyController
         Debug.Log("gaina a luat salmonela!!!");
         this.patrolSpeed = 3.5f;
 
+        GetComponent<AudioSource>().Play();
         if (spriteRenderer != null)
         {
             spriteRenderer.sprite = gainaNebuna;
+        }
+    }
+
+    private void v_SearchAllEnemies()
+    {
+        bool anyLoop = false;
+        GameObject p = GameObject.FindGameObjectWithTag("Player");
+        GameObject[] l = GameObject.FindGameObjectsWithTag("Lup");
+        Vector3 dir = Vector3.zero;
+        foreach (GameObject p2 in l)
+        {
+            float dist = Vector3.Distance(transform.position, p2.transform.position);
+            if (dist >= fugeGaina)
+            {
+                anyLoop = true;
+                
+                dir.x += (p2.transform.position - transform.position).x;
+                dir.z += (p2.transform.position - transform.position).z;
+            }
+        }
+        if (Vector3.Distance(transform.position, p.transform.position) > fugeGaina)
+        {
+            anyLoop = true;
+            dir.x += p.transform.position.x;
+            dir.z += p.transform.position.z;
+        }
+        
+        dir *= -1;
+        DirectiaInCareFuge = dir;
+        b_Speriata = anyLoop;
+        if (b_Speriata)
+        {
+            moveEnemy(dir.normalized);
         }
     }
     
@@ -93,10 +153,13 @@ public class GainaController : EnemyController
             if (gameManager != null)
             {
                 print("toggle - gaina controller");
-                gameManager.GainaMoarta();
+                //gameManager.GainaMoarta();
             }
             print("toggle - am omorat gaina");
-            Destroy(gameObject);
+            DestroyObject();
+            //GetComponent<BoxCollider>().enabled = false;
+            //GetComponent<CharacterController>().enabled = false;
+            //gameObject.SetActive(false);
         }
         //print("distanta: " + distance);
         isPatrolling = true;
@@ -144,7 +207,7 @@ public class GainaController : EnemyController
         if (other.CompareTag("Player") || other.CompareTag("Lup"))
         {
             
-            SeePlayer(other.transform.position, other.tag);
+            //SeePlayer(other.transform.position, other.tag);
         }
     }
 
@@ -156,26 +219,28 @@ public class GainaController : EnemyController
             Vector2 targetPosXZ = new Vector2(other.transform.position.x, other.transform.position.z);
             float distance = Vector2.Distance(positionXZ, targetPosXZ);
             print("distanta gaina " + distance);
-            if (distance < 6.5f)
+            if (isInfected)
             {
-                if (isInfected)
-                {
-                    isInfected = false;
-                    gameManager.InfecteazaGainaRendam();
-                    gameManager.InfecteazaGainaRendam();
-                    spriteRenderer.sprite = gainaNormala;
-                    gameManager.MuceaLovit();
-                }
-                else
-                {
-                    if (gameManager != null)
-                    {
-                        //print("toggle - gaina controller");
-                        gameManager.GainaMoarta();
-                    }
-                    Object.Destroy(gameObject);
-                }
+                isInfected = false;
+                gameManager.InfecteazaGainaRendam();
+                gameManager.InfecteazaGainaRendam();
+                spriteRenderer.sprite = gainaNormala;
+                gameManager.MuceaLovit();
             }
+            else
+            {
+                if (gameManager != null)
+                {
+                    //print("toggle - gaina controller");
+                    gameManager.GainaMoarta();
+                }
+                DestroyObject();
+                //GetComponent<BoxCollider>().enabled = false;
+                //GetComponent<CharacterController>().enabled = false;
+                //gameObject.SetActive(false);
+                //Object.Destroy(gameObject);
+            }
+            
         }
         if (other.CompareTag("Wall"))
         {
@@ -183,5 +248,13 @@ public class GainaController : EnemyController
             base.setPatrolPointInRange();
         }
     }
-    
+
+    void DestroyObject()
+    {
+        //transform.position = new Vector3(1000, 1000, 1000);
+        b_GainaMoarta = true;
+        f_TeleportTimer = Time.time;
+        //Destroy(gameObject);
+    }
+
 }
