@@ -11,6 +11,7 @@ TagManager:
   - Wall
   - EnemyDamage
   - Sajatha
+  - Mumie
   layers:
   - Default
   - TransparentFX
