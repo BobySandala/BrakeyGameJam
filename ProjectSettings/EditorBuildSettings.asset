@@ -9,11 +9,17 @@ EditorBuildSettings:
     path: Assets/BreciulBoby/Scenes/MainMenuScene.unity
     guid: 0085efeb5c8584b46be29a7ccb7e54a8
   - enabled: 1
+    path: Assets/BreciulBoby/Scenes/TranzitionScene.unity
+    guid: f7e71d125d767de42a081437daa4e34a
+  - enabled: 1
     path: Assets/BreciulBoby/Scenes/Village.unity
     guid: 5a1351f0a20deb446914a47bef472735
   - enabled: 1
     path: Assets/BreciulBoby/Scenes/Leval1.unity
     guid: cd4e9c8a6506ff641ab7ead72fd5cc8b
+  - enabled: 1
+    path: Assets/BreciulBoby/Scenes/FromVillageToDesert.unity
+    guid: 7f3401e152c7d6d4dbe1b9946004ca19
   - enabled: 1
     path: Assets/BreciulBoby/Scenes/Lv_2_Quicksand.unity
     guid: 9c1a52f86f798fa4eb623834409e3146
