@@ -122,6 +122,7 @@ public class EnemyMovementController : MonoBehaviour
 
         if (i_HP <= 0)
         {
+            GetComponent<CharacterController>().enabled = false;
             if (Time.time >= f_DeathTime + f_DeathLengthTime)
             {
                 Destroy(gameObject);

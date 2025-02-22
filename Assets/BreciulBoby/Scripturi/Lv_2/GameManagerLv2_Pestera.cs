@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManagerLv2_Pestera : MonoBehaviour
 {
@@ -91,11 +92,7 @@ public class GameManagerLv2_Pestera : MonoBehaviour
             UI_Canvas.v_AparitieSlepNath1();
             i_CurrentPhase++;
 
-            GameObject[] mummys = GameObject.FindGameObjectsWithTag("Mumie");
-            foreach (GameObject mummy in mummys)
-            {
-                mummy.GetComponent<MummyController>().b_Freeze = true;
-            }
+            v_freezeMummies(true);
             mumie1.v_GoBackToInitialPosition();
             mumie2.v_GoBackToInitialPosition();
 
@@ -105,24 +102,29 @@ public class GameManagerLv2_Pestera : MonoBehaviour
     {
         if (UI_Canvas.b_TaceSlepNath())
         {
-            GameObject[] mummys = GameObject.FindGameObjectsWithTag("Mumie");
-            foreach (GameObject mummy in mummys)
-            {
-                mummy.GetComponent<MummyController>().b_Freeze = false;
-            }
+            v_freezeMummies(false);
             if (mummySpawnerController != null)
             {
                 mummySpawnerController.v_StartSpawning();
-                i_CurrentPhase++;
-                UI_Canvas.v_DisparitieSlepNath1();
-
-                player.uInt_HP = 3;
-                player.b_BouEquipped = true;
-                UI_Canvas.v_RefillUIHP();
-
-                
-                player.transform.position = playerInitialPosition;
             }
+            i_CurrentPhase++;
+            UI_Canvas.v_DisparitieSlepNath1();
+
+            player.uInt_HP = 3;
+            player.v_SetDed(false);
+            player.b_BouEquipped = true;
+            UI_Canvas.v_RefillUIHP();
+            UI_Canvas.v_EquipBow();
+                
+            player.transform.position = playerInitialPosition;
+        }
+    }
+    private void v_freezeMummies(bool freeze)
+    {
+        GameObject[] mummys = GameObject.FindGameObjectsWithTag("Mumie");
+        foreach (GameObject mummy in mummys)
+        {
+            mummy.GetComponent<MummyController>().b_Freeze = freeze;
         }
     }
     private void v_Phase3()
@@ -132,16 +134,23 @@ public class GameManagerLv2_Pestera : MonoBehaviour
             //gameover
             UI_Canvas.v_gameOver();
             i_CurrentPhase++;
+            v_freezeMummies(true);
         } else if (i_DedMummies >= mummySpawnerController.i_SpawnMaxCount + 2)
         {
             UI_Canvas.v_gamePassed();
             i_CurrentPhase += 2;
+            v_freezeMummies(true);
         }
     }
     private void v_GameOverPhase()
     {
         if (UI_Canvas.b_TaceSlepNath())
         {
+            UI_Canvas.v_SetInstructionText("press space to retry");
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
             print("final game over wompwomp");
         }
     }
@@ -149,6 +158,12 @@ public class GameManagerLv2_Pestera : MonoBehaviour
     {
         if (UI_Canvas.b_TaceSlepNath())
         {
+            UI_Canvas.v_SetInstructionText("Press Space to continue");
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            print("final game over wompwomp");
             print("final gamepassed congrulation");
         }
     }

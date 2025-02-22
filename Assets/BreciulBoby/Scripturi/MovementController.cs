@@ -73,6 +73,7 @@ public class MovementController : MonoBehaviour
 
     void Update()
     {
+        if (b_Ded) { return; }
         if (!b_BouEquipped) { i_EquippedWeapon = 0; }
         if (b_Freeze)
         {
@@ -140,6 +141,10 @@ public class MovementController : MonoBehaviour
             }
         }
 
+    }
+    public void v_SetDed(bool b)
+    {
+        b_Ded = b;
     }
     private void SpawnSajatha()
     {

@@ -30,6 +30,12 @@ public class lv2_UI_pestra : MonoBehaviour
         aparitieSlepNath1.b_LineByLine = true;
     }
 
+    public void v_SetInstructionText(string text)
+    {
+        if (gameOver_UI.enabled) { gameOver_UI.SetInstructionText(text); }
+        if (gamePassed_UI.enabled) { gamePassed_UI.SetInstructionText(text); }
+    }
+
     public void v_DisparitieSlepNath1()
     {
         if (aparitieSlepNath1 == null) { return; }
@@ -44,6 +50,10 @@ public class lv2_UI_pestra : MonoBehaviour
         if (gamePassed_UI.isActiveAndEnabled) { return gamePassed_UI.taceSlapnut; }
 
         return false;
+    }
+    public void v_EquipBow()
+    {
+        if (weapon_UI != null) { weapon_UI.v_EquipBow(); }
     }
     public void v_SetWeapon1()
     {

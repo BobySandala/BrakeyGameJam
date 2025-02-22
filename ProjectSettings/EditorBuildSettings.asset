@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/BreciulBoby/Scenes/true_lv2.unity
     guid: 9cb227af390b5434793121b75b55cf6c
+  - enabled: 1
+    path: Assets/BreciulBoby/Scenes/exitscene.unity
+    guid: b8119457494637749b340a52c655a5e0
   m_configObjects: {}

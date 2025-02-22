@@ -48,4 +48,8 @@ public class Phase_1_Controller_LV_1 : MonoBehaviour
     {
         if (Weapon != null) { Weapon.v_SetWeapon2(); }
     }
+    public void v_EquipBow()
+    {
+        if (Weapon != null) { Weapon.v_EquipBow(); }
+    }
 }
