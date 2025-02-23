@@ -97,11 +97,45 @@ public class EnemyMovementController : MonoBehaviour
                 i_Index2++;
             }
         }
-        GO_player = g[i_Index];
+        if (g.Count > 0)
+        {
+            GO_player = g[i_Index];
+        }
     }
 
     // Update is called once per frame
     protected void Update()
+    {
+        v_DeathLogic();
+        v_ShieldAnimLogic();
+        v_Gravity();
+
+        
+    }
+
+    public void v_ShieldAnimLogic()
+    {
+        if (i_HP == 1 && b_Shielded)
+        {
+            if (A_ShieldAnimator != null)
+            {
+                A_ShieldAnimator.SetFloat("animSpeed", 1);
+            }
+        }
+    }
+    public void v_DeathLogic()
+    {
+        if (i_HP <= 0)
+        {
+            GetComponent<CharacterController>().enabled = false;
+            if (Time.time >= f_DeathTime + f_DeathLengthTime)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    public void v_Targeting()
     {
         if (A_SpriteAnimator != null)
         {
@@ -120,23 +154,6 @@ public class EnemyMovementController : MonoBehaviour
         v_CalculateDirection();
         v_AnimController();
         v_FollowPlayer();
-
-        if (i_HP <= 0)
-        {
-            GetComponent<CharacterController>().enabled = false;
-            if (Time.time >= f_DeathTime + f_DeathLengthTime)
-            {
-                Destroy(gameObject);
-            }
-        }
-
-        if (i_HP == 1 && b_Shielded)
-        {
-            if (A_ShieldAnimator != null)
-            {
-                A_ShieldAnimator.SetFloat("animSpeed", 1);
-            }
-        }
     }
 
     private void OnDestroy()
@@ -152,10 +169,8 @@ public class EnemyMovementController : MonoBehaviour
         }
     }
 
-    private void v_FollowPlayer()
+    private void v_Gravity()
     {
-        if (GO_player == null) { return; }
-
         if (!CC_controller.isGrounded)
         {
             v3_velocity.y -= f_gravity * Time.deltaTime;
@@ -165,8 +180,11 @@ public class EnemyMovementController : MonoBehaviour
             v3_velocity.y = -2f;
         }
         CC_controller.Move(v3_velocity * Time.deltaTime);
-        
+    }
 
+    private void v_FollowPlayer()
+    {
+        if (GO_player == null) { return; }
         float f_Distance = Vector3.Distance(transform.position, GO_player.transform.position);
         Vector3 v3_PlayerDirection = GO_player.transform.position - transform.position;
         v3_PlayerDirection.Normalize();

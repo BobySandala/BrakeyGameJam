@@ -49,6 +49,7 @@ MonoBehaviour:
   TakeDamageSound: {fileID: 8300000, guid: 0140bb70a4911d047b6babecb23b3e7c, type: 3}
   DeathSound: {fileID: 8300000, guid: 65dc5b9ce80b51d4893c258e957b3d77, type: 3}
   BubblePop: {fileID: 8300000, guid: c80f07db12ba4f24389e189ec9ba16e0, type: 3}
+  Revive: {fileID: 0}
 --- !u!82 &7947540928039338803
 AudioSource:
   m_ObjectHideFlags: 0
@@ -504,7 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da697f58fb2e6d34ea4d4a2b573e3636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MC_controller: {fileID: 9134411472872698301}
+  MC_controller: {fileID: 0}
 --- !u!65 &9134411473183309293
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -679,7 +680,7 @@ MonoBehaviour:
   uInt_DmgAmount: 1
   f_AttackDelay: 1
   b_ChargingAttack: 0
-  m_Controller: {fileID: 9134411472872698301}
+  m_Controller: {fileID: 0}
 --- !u!65 &9134411473543330611
 BoxCollider:
   m_ObjectHideFlags: 0

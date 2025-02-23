@@ -19,6 +19,7 @@ public class MummyController : EnemyMovementController
     {
         if (b_Freeze) { A_SpriteAnimator.SetFloat("anim_speed", 0); return; }
         base.Update();
+        base.v_Targeting();
     }
 
     public void v_TakeDamage()
