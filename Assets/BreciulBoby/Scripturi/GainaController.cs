@@ -117,7 +117,7 @@ public class GainaController : EnemyController
         foreach (GameObject p2 in l)
         {
             float dist = Vector3.Distance(transform.position, p2.transform.position);
-            if (dist >= fugeGaina)
+            if (dist <= fugeGaina)
             {
                 anyLoop = true;
                 
@@ -125,11 +125,25 @@ public class GainaController : EnemyController
                 dir.z += (p2.transform.position - transform.position).z;
             }
         }
-        if (Vector3.Distance(transform.position, p.transform.position) > fugeGaina)
+        if (Vector3.Distance(transform.position, p.transform.position) < fugeGaina)
         {
             anyLoop = true;
             dir.x += p.transform.position.x;
             dir.z += p.transform.position.z;
+        }
+        else if (Time.time >= nextAttackSpeed && isInfected)
+        {
+            Vector3 direction = (p.transform.position - transform.position).normalized;
+            Vector3 startPosition = transform.position;
+            GameObject ouInstance = Instantiate(glont, startPosition, Quaternion.identity);
+            OuController ou = ouInstance.GetComponent<OuController>();
+            if (ou != null && !gameManager.frezzeAll)
+            {
+                ou.Initialize(startPosition, direction, speedOu, lifeSpan);
+                ou.transform.localScale = new Vector3(7f, 7f, 7f);
+            }
+
+            nextAttackSpeed = Time.time + attackSpeed;
         }
         
         dir *= -1;
@@ -234,7 +248,7 @@ public class GainaController : EnemyController
                     //print("toggle - gaina controller");
                     gameManager.GainaMoarta();
                 }
-                DestroyObject();
+                //DestroyObject();
                 //GetComponent<BoxCollider>().enabled = false;
                 //GetComponent<CharacterController>().enabled = false;
                 //gameObject.SetActive(false);

@@ -71,7 +71,7 @@ public class GameManagerScript : MonoBehaviour
                 {
                     frezzeAll = true;
                     int currentIndex = SceneManager.GetActiveScene().buildIndex;
-                    int previousIndex = currentIndex - 1;
+                    int previousIndex = currentIndex + 1;
 
                     if (previousIndex >= 0) // Ensure it's not out of bounds
                     {
@@ -87,10 +87,15 @@ public class GameManagerScript : MonoBehaviour
                     ambiental.SetActive(true);
                     musica.SetActive(true);
                     SoundController.v_SecondPhase();
-
+                    guiCanvas.GetComponent<UI_Controller_LV1>().NextPhase();
+                    
+                    for (int i = 0; i < 3 - HP; i++)
+                    {
+                        guiCanvas.GetComponent<UI_Controller_LV1>().InimaDied();
+                    }
+                    
                     Time.timeScale = 1;
                     InfecteazaGainaRendam();
-                    guiCanvas.GetComponent<UI_Controller_LV1>().NextPhase();
                     frezzeAll = false;
                 }
             }
@@ -103,10 +108,8 @@ public class GameManagerScript : MonoBehaviour
                 playerDamage();
             }
         }
-
-
-
-        if (HP <= 0 || numarGainiMoarte >= 3)
+            
+        if (HP <= 0)
         {
             //game over
             isGameOver = true;
@@ -146,11 +149,11 @@ public class GameManagerScript : MonoBehaviour
     {
         guiCanvas.GetComponent<UI_Controller_LV1>().GainaDied();
         print("toggle - game manager");
-        numarGainiMoarte++;
-        if (numarGainiMoarte >= 3)
+        //numarGainiMoarte++;
+        /*if (numarGainiMoarte >= 3)
         {
             isGameOver = true;
-        }
+        }*/
     }
 
     public void LupMort()

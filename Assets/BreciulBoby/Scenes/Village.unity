@@ -133999,6 +133999,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 712d23b70ee92a341a92aad4a5459341, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e5bdd42bb02e2d478710f50f09fe64c, type: 3}
+--- !u!4 &571764059 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 685125227311135179, guid: b426f406a9551e640a6596a160e7871d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2081314969}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &571863999 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3430834248411156549, guid: f4bce42171441314ebf074066c616f2f,
@@ -409357,6 +409363,105 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 620243468}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1780371989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1780371990}
+  - component: {fileID: 1780371991}
+  - component: {fileID: 1780371992}
+  m_Layer: 0
+  m_Name: questMark
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1780371990
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780371989}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.318, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 571764059}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1780371991
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780371989}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 98fff7a2b3266cd40a589d58a737e6b3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.06, y: 0.17}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &1780371992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780371989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9159d83356935704881998f2a194f299, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Amplitude: 0.005
+  Frequency: 3
 --- !u!1001 &1780583332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -420880,6 +420985,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 685125227311135177, guid: b426f406a9551e640a6596a160e7871d,
+        type: 3}
+      propertyPath: messages.Array.data[0]
+      value: you can use that axe to chop some wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 685125227311135177, guid: b426f406a9551e640a6596a160e7871d,
+        type: 3}
+      propertyPath: messages.Array.data[1]
+      value: we really need some wood for the winter
+      objectReference: {fileID: 0}
+    - target: {fileID: 685125227311135177, guid: b426f406a9551e640a6596a160e7871d,
+        type: 3}
+      propertyPath: messages.Array.data[2]
+      value: a village with three guys
+      objectReference: {fileID: 0}
     - target: {fileID: 685125227311135179, guid: b426f406a9551e640a6596a160e7871d,
         type: 3}
       propertyPath: m_RootOrder
@@ -477662,18 +477782,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 685125227311135177, guid: b426f406a9551e640a6596a160e7871d,
         type: 3}
+      propertyPath: messages.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 685125227311135177, guid: b426f406a9551e640a6596a160e7871d,
+        type: 3}
       propertyPath: messages.Array.data[0]
-      value: 1
+      value: we are trying to raise chickens
       objectReference: {fileID: 0}
     - target: {fileID: 685125227311135177, guid: b426f406a9551e640a6596a160e7871d,
         type: 3}
       propertyPath: messages.Array.data[1]
-      value: 2
+      value: but the wolves are killing them!
       objectReference: {fileID: 0}
     - target: {fileID: 685125227311135177, guid: b426f406a9551e640a6596a160e7871d,
         type: 3}
       propertyPath: messages.Array.data[2]
-      value: 3
+      value: we are left with no food for the winter
+      objectReference: {fileID: 0}
+    - target: {fileID: 685125227311135177, guid: b426f406a9551e640a6596a160e7871d,
+        type: 3}
+      propertyPath: messages.Array.data[3]
+      value: please lend us a hand
+      objectReference: {fileID: 0}
+    - target: {fileID: 685125227311135177, guid: b426f406a9551e640a6596a160e7871d,
+        type: 3}
+      propertyPath: messages.Array.data[4]
+      value: go to the beacon and enter the pen
       objectReference: {fileID: 0}
     - target: {fileID: 685125227311135179, guid: b426f406a9551e640a6596a160e7871d,
         type: 3}
@@ -477734,6 +477869,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: NPC (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 685125227656366372, guid: b426f406a9551e640a6596a160e7871d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.298
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b426f406a9551e640a6596a160e7871d, type: 3}
@@ -492341,6 +492481,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 685125227311135177, guid: b426f406a9551e640a6596a160e7871d,
+        type: 3}
+      propertyPath: messages.Array.data[0]
+      value: good day traveler
+      objectReference: {fileID: 0}
+    - target: {fileID: 685125227311135177, guid: b426f406a9551e640a6596a160e7871d,
+        type: 3}
+      propertyPath: messages.Array.data[1]
+      value: good day to chop some timber
+      objectReference: {fileID: 0}
     - target: {fileID: 685125227311135179, guid: b426f406a9551e640a6596a160e7871d,
         type: 3}
       propertyPath: m_RootOrder

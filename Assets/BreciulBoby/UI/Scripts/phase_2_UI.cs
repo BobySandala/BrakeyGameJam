@@ -159,7 +159,7 @@ public class phase_2_UI : MonoBehaviour
 
 
 
-        if (Input.GetKeyUp(KeyCode.KeypadEnter))
+        if (Input.GetKeyUp(KeyCode.Return))
         {
             if (!writing_message)
             {

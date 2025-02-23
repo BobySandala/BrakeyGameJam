@@ -81,7 +81,7 @@ public class MummyController : EnemyMovementController
     {
         foreach (string s in base.s_TargetTags)
         {
-            if (other.CompareTag(s))
+            if (other.CompareTag(s) && i_HP > 0)
             {
                 if (base.enemyAttackHitbox != null)
                 {

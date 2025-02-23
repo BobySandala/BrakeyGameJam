@@ -460,7 +460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   f_SpawnTimer: 2
-  i_SpawnMaxCount: 10
+  i_SpawnMaxCount: 5
   mummy: {fileID: 9134411472872698301, guid: 16d0fbdaa3874b1468e3ac775bde645b, type: 3}
 --- !u!4 &56783109
 Transform:
@@ -825,14 +825,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PressSpace: {fileID: 1059570879}
   messages:
-  - cox
+  - ...
+  - 'I do not expect you to forgive me player '
+  - You may not want to be my friend now
+  - But the great SlepNath can make you his friend by force!
+  - We shall meet again player!
   guiText: {fileID: 372309347}
   taceSlapnut: 0
   pause: 0.1
-  SlepNuth_Sprites: []
+  SlepNuth_Sprites:
+  - {fileID: 21300000, guid: 5be43754345cc8e4bb0bd5221d1cceef, type: 3}
+  - {fileID: 21300000, guid: 9908ba5af1666a44d871df3d1c34ace6, type: 3}
+  - {fileID: 21300000, guid: 2baccd1b4e51c0145bd3bf8b5ee43d43, type: 3}
+  - {fileID: 21300000, guid: 5fa307fe662545a4f9b4945ab4e7fd46, type: 3}
+  - {fileID: 21300000, guid: a557a8d28a5b9df47a17a9fa3031c145, type: 3}
   SlepNuth_Sprite: {fileID: 231762469}
   f_delayTime: 1
-  b_LineByLine: 0
+  b_LineByLine: 1
 --- !u!1 &231762467
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,7 +900,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c60cc9a5db4b1c24ab9da7d436b17485, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5be43754345cc8e4bb0bd5221d1cceef, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1589,8 +1598,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56
-  m_fontSizeBase: 56
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2715,14 +2724,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PressSpace: {fileID: 488208920}
   messages:
-  - maybe next time you will press the good buttons
+  - skill issue
   guiText: {fileID: 2132699215}
   taceSlapnut: 0
   pause: 0.1
-  SlepNuth_Sprites: []
+  SlepNuth_Sprites:
+  - {fileID: 21300000, guid: d552601e7510a9642b6d731e3424c779, type: 3}
   SlepNuth_Sprite: {fileID: 1744598226}
   f_delayTime: 1
-  b_LineByLine: 0
+  b_LineByLine: 1
 --- !u!1 &847884796 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5436620944679667986, guid: 199e73653d4f48642b1f1e5e914f17f5,
@@ -2999,7 +3009,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2763fdbc4bb834840b099570e66d1a71, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f833512464f109a4faeb09c552e79ce4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3576,8 +3586,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56
-  m_fontSizeBase: 56
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4185,17 +4195,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PressSpace: {fileID: 1026761108}
   messages:
-  - try pressing space to free yourself
-  - maybe o ??
-  - the number 3 looks nice
-  - now i am bored
+  - Look... player... I've been thinking...
+  - ...
+  - 'I''m sorry...I wanted to make things more interesting for you... '
+  - Because after so many days alone...
+  - 'The great SlepNath only wanted a friend '
+  - 'But fear not friend! For the great SlepNath is here to save the day! '
+  - ...
   guiText: {fileID: 1090055353}
   taceSlapnut: 0
   pause: 0.1
-  SlepNuth_Sprites: []
+  SlepNuth_Sprites:
+  - {fileID: 21300000, guid: 5be43754345cc8e4bb0bd5221d1cceef, type: 3}
+  - {fileID: 21300000, guid: 9908ba5af1666a44d871df3d1c34ace6, type: 3}
+  - {fileID: 21300000, guid: 30bffb4056f0830428d92f28b1f56860, type: 3}
+  - {fileID: 21300000, guid: 2baccd1b4e51c0145bd3bf8b5ee43d43, type: 3}
+  - {fileID: 21300000, guid: 5be43754345cc8e4bb0bd5221d1cceef, type: 3}
+  - {fileID: 21300000, guid: 5e2839b8e4dc97845a48da1e3ef230af, type: 3}
+  - {fileID: 21300000, guid: e9a646bbac3ad0b4891008cca1dcfc03, type: 3}
   SlepNuth_Sprite: {fileID: 1857031450}
   f_delayTime: 1
-  b_LineByLine: 0
+  b_LineByLine: 1
 --- !u!1 &1296000526 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5049032948309972686, guid: 199e73653d4f48642b1f1e5e914f17f5,
@@ -5093,7 +5113,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c60cc9a5db4b1c24ab9da7d436b17485, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5fa307fe662545a4f9b4945ab4e7fd46, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5353,7 +5373,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c60cc9a5db4b1c24ab9da7d436b17485, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5be43754345cc8e4bb0bd5221d1cceef, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6415,8 +6435,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56
-  m_fontSizeBase: 56
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

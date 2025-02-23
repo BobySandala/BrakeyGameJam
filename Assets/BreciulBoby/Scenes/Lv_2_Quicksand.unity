@@ -1034,7 +1034,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c60cc9a5db4b1c24ab9da7d436b17485, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5fa307fe662545a4f9b4945ab4e7fd46, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1650,14 +1650,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PressSpace: {fileID: 526298611}
   messages:
-  - try pressing space to free yourself
-  - maybe o ??
-  - the number 3 looks nice
-  - now i am bored
+  - 'HAHAHAHAH, looks like you walked right into quicksand '
+  - Oops, might have changed your keybind
+  - 'ah, did it again, silly old me '
+  - HAHAH, now I stole it! have a nice ride down PLAYER
   guiText: {fileID: 677796129}
   taceSlapnut: 0
   pause: 0.1
-  SlepNuth_Sprites: []
+  SlepNuth_Sprites:
+  - {fileID: 21300000, guid: 5fa307fe662545a4f9b4945ab4e7fd46, type: 3}
+  - {fileID: 21300000, guid: e9a646bbac3ad0b4891008cca1dcfc03, type: 3}
+  - {fileID: 21300000, guid: 5c168d2d935a7b044a6e213f48c166d4, type: 3}
+  - {fileID: 21300000, guid: 5fa307fe662545a4f9b4945ab4e7fd46, type: 3}
   SlepNuth_Sprite: {fileID: 1906943505}
   f_delayTime: 1
   b_LineByLine: 1
@@ -2005,8 +2009,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56
-  m_fontSizeBase: 56
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2236,8 +2240,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56
-  m_fontSizeBase: 56
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3396,11 +3400,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PressSpace: {fileID: 1353094552}
   messages:
-  - cox
+  - 
   guiText: {fileID: 601046247}
   taceSlapnut: 0
   pause: 0.1
-  SlepNuth_Sprites: []
+  SlepNuth_Sprites:
+  - {fileID: 21300000, guid: 5fa307fe662545a4f9b4945ab4e7fd46, type: 3}
   SlepNuth_Sprite: {fileID: 240910069}
   f_delayTime: 1
   b_LineByLine: 0
@@ -4340,7 +4345,7 @@ MonoBehaviour:
   playerPositionAtContact: {x: 0, y: 0, z: 0}
   graity_in_sand: 0.0005
   QS: 0
-  numberOfKeyPresses: 3
+  numberOfKeyPresses: 5
   KeyNames: 200000006f00000030010000
   gameEnded: 0
   fellOff: 0
@@ -4605,7 +4610,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c60cc9a5db4b1c24ab9da7d436b17485, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e2839b8e4dc97845a48da1e3ef230af, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5841,8 +5846,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56
-  m_fontSizeBase: 56
+  m_fontSize: 42
+  m_fontSizeBase: 42
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6290,11 +6295,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PressSpace: {fileID: 1354493230}
   messages:
-  - maybe next time you will press the good buttons
+  - haha, looks like you sunk!
   guiText: {fileID: 1604414309}
   taceSlapnut: 0
   pause: 0.1
-  SlepNuth_Sprites: []
+  SlepNuth_Sprites:
+  - {fileID: 21300000, guid: 5e2839b8e4dc97845a48da1e3ef230af, type: 3}
   SlepNuth_Sprite: {fileID: 1252590300}
   f_delayTime: 1
   b_LineByLine: 0
@@ -6466,7 +6472,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c60cc9a5db4b1c24ab9da7d436b17485, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5fa307fe662545a4f9b4945ab4e7fd46, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

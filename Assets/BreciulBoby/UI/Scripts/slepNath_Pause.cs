@@ -99,7 +99,7 @@ public class slepNath_Pause : MonoBehaviour
             spacePressed = true;
         }
 
-        if (Input.GetKeyUp(KeyCode.KeypadEnter))
+        if (Input.GetKeyUp(KeyCode.Return))
         {
             if (!writing_message)
             {

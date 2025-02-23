@@ -79,12 +79,8 @@ public class GameManager_LV2 : MonoBehaviour
                 QS = false;
             }
         }
-        else
-        {
 
-        }
-
-        if (player.transform.position.y <= -voidDepth)
+        if (player.transform.position.y <= -voidDepth && !gameEnded)
         {
             if (!fellOff)
             {
@@ -103,7 +99,7 @@ public class GameManager_LV2 : MonoBehaviour
             }
         }
 
-        if (gameEnded && UI_Controller.TaceSlapnut() && !fellOff)
+        if (gameEnded && !fellOff)
         {
             load_Lv_2();
         }
