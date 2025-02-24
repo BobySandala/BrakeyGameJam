@@ -109,8 +109,6 @@ public class EnemyMovementController : MonoBehaviour
         v_DeathLogic();
         v_ShieldAnimLogic();
         v_Gravity();
-
-        
     }
 
     public void v_ShieldAnimLogic()
@@ -146,10 +144,11 @@ public class EnemyMovementController : MonoBehaviour
             f_Retargeting = Time.time + f_RetargetingTime;
             v_ChooseTarget();
         }
+        
 
-        if (GO_player != null)
+        if (GO_player == null)
         {
-            print("am gasit playerul la pozitia: " + GO_player.transform.position);
+            return;
         }
         v_CalculateDirection();
         v_AnimController();
@@ -189,7 +188,7 @@ public class EnemyMovementController : MonoBehaviour
         Vector3 v3_PlayerDirection = GO_player.transform.position - transform.position;
         v3_PlayerDirection.Normalize();
 
-        print("distanta: " + f_Distance);
+        //print("distanta: " + f_Distance);
         if (f_Distance > f_StopRange) { MoveCharacter(v3_PlayerDirection); }
     }
 
@@ -223,7 +222,6 @@ public class EnemyMovementController : MonoBehaviour
             }
             return;
         }
-        
         
         if (v3_MovingDirection == Vector3.zero && i_CurrentAnimState != i_IdleState)
         {

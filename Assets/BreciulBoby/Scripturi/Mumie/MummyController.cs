@@ -7,7 +7,7 @@ public class MummyController : EnemyMovementController
 {
     // Start is called before the first frame update
     public bool b_Freeze;
-
+    private float f_WaitBeforeCharging;
 
     void Start()
     {
@@ -49,8 +49,7 @@ public class MummyController : EnemyMovementController
             {
                 if (base.enemyAttackHitbox != null)
                 {
-                    base.oneShotSounds.v_AttackSound();
-                    base.enemyAttackHitbox.SetSeePlayerTime(Time.time);
+                    //base.oneShotSounds.v_AttackSound();
                     base.enemyAttackHitbox.SetChargingAttack(true);
                 }
             }
@@ -58,25 +57,27 @@ public class MummyController : EnemyMovementController
         }
     }
 
-    //private void OnTriggerStay(Collider other)
-    //{
-    //    bool b = false;
-    //    foreach (string s in base.s_TargetTags)
-    //    {
-    //        if (other.CompareTag(s))
-    //        {
-    //            if (base.enemyAttackHitbox != null)
-    //            {
-    //                b = true;
-    //                //base.enemyAttackHitbox.SetSeePlayerTime(Time.time);
-    //                /*base.enemyAttackHitbox.SetChargingAttack(true);*/
-    //            }
-    //        }
-    //        print("player a intrat in collider");
-    //    }
-    //    print("lupu vede pe cineva");
-    //    base.enemyAttackHitbox.SetChargingAttack(b);
-    //}
+    private void OnTriggerStay(Collider other)
+    {
+        /*
+        bool b = false;
+        foreach (string s in base.s_TargetTags)
+        {
+            if (other.CompareTag(s))
+            {
+                if (base.enemyAttackHitbox != null)
+                {
+                    b = true;
+                    //base.enemyAttackHitbox.SetSeePlayerTime(Time.time);
+                    /*base.enemyAttackHitbox.SetChargingAttack(true);
+                }
+            }
+            print("player a intrat in collider");
+        }
+        print("lupu vede pe cineva");
+        base.enemyAttackHitbox.SetChargingAttack(b);
+        */
+    }
 
     private void OnTriggerExit(Collider other)
     {
@@ -88,8 +89,9 @@ public class MummyController : EnemyMovementController
                 {
                     base.enemyAttackHitbox.SetChargingAttack(false);
                 }
+                print("gaina a iesit din collider");
             }
-            print("player a iesit din collider");
         }
     }
+
 }

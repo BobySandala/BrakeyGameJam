@@ -192,7 +192,6 @@ public class MovementController : MonoBehaviour
         oneShotSounds.v_TakeDamageSound();
         print("player a luat damage");
         EnemyAttackHitbox hitbox = GO_source.GetComponent<EnemyAttackHitbox>();
-        hitbox.DecativateHitbox();
         uInt_HP -= hitbox.uInt_DmgAmount;
     }
 

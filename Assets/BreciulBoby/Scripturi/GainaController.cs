@@ -16,12 +16,13 @@ public class GainaController : EnemyMovementController
     public string[] s_EnemiesTags = { "Player", "Lup" };
     public float f_PerlinNoiseSpeed;
     public OuController ouPrefab;
+    public bool b_IsDed;
 
     private float noiseOffsetX;
     private float noiseOffsetZ;
 
-    public float f_OuSpeed;
-    public float f_OuLifeSpan;
+    public float f_OuSpeed = 3;
+    public float f_OuLifeSpan = 10;
 
     //attack speed ou
     public float f_ShootAttackSpeed;
@@ -44,7 +45,6 @@ public class GainaController : EnemyMovementController
         Walk();
         v_ShootEgg();
     } 
-
 
     public void iaSalmonela()
     {
@@ -78,6 +78,16 @@ public class GainaController : EnemyMovementController
         }
 
         //print("shootEgg motherfuker");
+    }
+    public void v_TakeDamage()
+    {
+        //Destroy(gameObject);
+        //gameObject.SetActive(false);
+        //transform.position -= new Vector3(0, -10, 0);
+        GetComponent<SphereCollider>().enabled = false;
+        GetComponent<CharacterController>().enabled = false;
+        print("gaina si-a luat damage");
+        Destroy(gameObject);
     }
     private void Walk()
     {
@@ -119,7 +129,6 @@ public class GainaController : EnemyMovementController
             }
         }
     }
-
     //returneaza array cu toate target-urile de care se sperie gaina si sunt in raza de speriat
     private GameObject[] go_SearchAllEnemiesInsideFleeRadius()
     {
