@@ -45,10 +45,7 @@ public class UI_Controller_LV1 : MonoBehaviour
 
     public void NextPhase()
     {
-        if (gameOver || gamePassed) return;
-        print("current phase" + current_phase);
-        SetAllActive(false);
-        current_phase++;
+        
 
         switch (current_phase) 
         {
@@ -65,6 +62,32 @@ public class UI_Controller_LV1 : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void v_SetPhase1()
+    {
+        if (gameOver || gamePassed) return;
+        print("current phase" + current_phase);
+        SetAllActive(false);
+        current_phase = 0;
+        ph_1.SetActive(true);
+    }
+    public void v_SetPhase2()
+    {
+        if (gameOver || gamePassed) return;
+        print("current phase" + current_phase);
+        SetAllActive(false);
+        current_phase = 1;
+        ph_2.SetActive(true);
+        phase_2.AFostSetatActiv();
+    }
+    public void v_SetPhase3()
+    {
+        if (gameOver || gamePassed) return;
+        print("current phase" + current_phase);
+        SetAllActive(false);
+        current_phase = 2;
+        ph_3.SetActive(true);
     }
 
     public void GameOver()
@@ -85,31 +108,6 @@ public class UI_Controller_LV1 : MonoBehaviour
         SetAllActive(false);
         GamePassedPhase.SetActive(true);
         phase_GP.AFostSetatActiv();
-    }
-
-    private void HandlePh_1()
-    {
-
-    }
-
-    private void HandlePh_2()
-    {
-
-    }
-
-    private void HandlePh_3()
-    {
-
-    }
-
-    private void HandleGameOver_Ph()
-    {
-
-    }
-
-    private void HandleGamePassed_Ph()
-    {
-        
     }
 
     public void LupDied()
@@ -136,30 +134,6 @@ public class UI_Controller_LV1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        switch (current_phase)
-        {
-            case 0:
-                HandlePh_1();
-                break;
-            case 1:
-                HandlePh_2();
-                break;
-            case 2:
-                HandlePh_3();
-                break;
-            default:
-                break;
-        }
-
-        if (gameOver)
-        {
-            HandleGameOver_Ph();
-        }
-        else if (gamePassed)
-        {
-            HandleGamePassed_Ph();
-        }
     }
 
     public bool TaceSlapnut()

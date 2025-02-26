@@ -86,17 +86,12 @@ public class slepNath_Pause : MonoBehaviour
 
     void part2()
     {
-        print("UI: a intrat in part2");
         if (!b_SlepNatheTheme)
         {
+            print("UI: a intrat in part2");
             SoundController.gameObject.SetActive(true);
             SoundController.v_SlepNathTheme();
             b_SlepNatheTheme = true;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            spacePressed = true;
         }
 
         if (Input.GetKeyUp(KeyCode.Return))
@@ -121,24 +116,13 @@ public class slepNath_Pause : MonoBehaviour
                 {
                     DialogueEnding();
                 }
+            } else
+            {
+                NextMessage();
             }
         }
 
-        if (!writing_message)
-        {
-            if (spacePressed)
-            {
-                pressSpaceText = "i meant enter";
-            }
-            else
-            {
-                pressSpaceText = "press space";
-            }
-        }
-        else
-        {
-            pressSpaceText = "";
-        }
+        pressSpaceText = "press enter to skip";
         PressSpace.text = pressSpaceText;
 
         if (writing_message)

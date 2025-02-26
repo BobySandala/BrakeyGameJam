@@ -371,6 +371,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gaina (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4282241842971616367, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4282241843680739903, guid: 703bf2120074fbd49a7bc67c7ec7d3d2,
         type: 3}
       propertyPath: m_Size.x
@@ -1597,6 +1602,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gaina
       objectReference: {fileID: 0}
+    - target: {fileID: 9101407542043135517, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9101407542043135519, guid: 9d45b1f0d94320244a3220e4823007f1,
         type: 3}
       propertyPath: m_RootOrder
@@ -1745,6 +1755,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lup
       objectReference: {fileID: 0}
+    - target: {fileID: 1026671556353087776, guid: 5da68ac31eec3c64abc4599beb34e61f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1026671556353087778, guid: 5da68ac31eec3c64abc4599beb34e61f,
         type: 3}
       propertyPath: m_RootOrder
@@ -1874,6 +1889,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mumie
+      objectReference: {fileID: 0}
+    - target: {fileID: 716954646037841247, guid: 6a712a9b69ab4734dbd512e16ecb0529,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a712a9b69ab4734dbd512e16ecb0529, type: 3}

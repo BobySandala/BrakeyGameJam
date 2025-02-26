@@ -17747,8 +17747,33 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
         type: 3}
+      propertyPath: f_OuSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
       propertyPath: f_WalkSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_OuLifeSpan
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_ShootRadius
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_FrightRadius
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_ShootAttackSpeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9101407542043135517, guid: 9d45b1f0d94320244a3220e4823007f1,
         type: 3}
@@ -18679,8 +18704,33 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
         type: 3}
+      propertyPath: f_OuSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
       propertyPath: f_WalkSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_OuLifeSpan
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_ShootRadius
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_FrightRadius
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_ShootAttackSpeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9101407542043135517, guid: 9d45b1f0d94320244a3220e4823007f1,
         type: 3}
@@ -19657,8 +19707,33 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
         type: 3}
+      propertyPath: f_OuSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
       propertyPath: f_WalkSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_OuLifeSpan
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_ShootRadius
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_FrightRadius
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_ShootAttackSpeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9101407542043135517, guid: 9d45b1f0d94320244a3220e4823007f1,
         type: 3}
@@ -24084,8 +24159,33 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
         type: 3}
+      propertyPath: f_OuSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
       propertyPath: f_WalkSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_OuLifeSpan
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_ShootRadius
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_FrightRadius
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_ShootAttackSpeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9101407542043135517, guid: 9d45b1f0d94320244a3220e4823007f1,
         type: 3}
@@ -25148,8 +25248,33 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
         type: 3}
+      propertyPath: f_OuSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
       propertyPath: f_WalkSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_OuLifeSpan
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_ShootRadius
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_FrightRadius
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_ShootAttackSpeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9101407542043135517, guid: 9d45b1f0d94320244a3220e4823007f1,
         type: 3}
@@ -26425,8 +26550,33 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
         type: 3}
+      propertyPath: f_OuSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
       propertyPath: f_WalkSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_OuLifeSpan
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_ShootRadius
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_FrightRadius
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_ShootAttackSpeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9101407542043135517, guid: 9d45b1f0d94320244a3220e4823007f1,
         type: 3}
@@ -27515,8 +27665,33 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
         type: 3}
+      propertyPath: f_OuSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
       propertyPath: f_WalkSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_OuLifeSpan
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_ShootRadius
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_FrightRadius
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_ShootAttackSpeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9101407542043135517, guid: 9d45b1f0d94320244a3220e4823007f1,
         type: 3}
@@ -32557,8 +32732,33 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
         type: 3}
+      propertyPath: f_OuSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
       propertyPath: f_WalkSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_OuLifeSpan
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_ShootRadius
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_FrightRadius
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_ShootAttackSpeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9101407542043135517, guid: 9d45b1f0d94320244a3220e4823007f1,
         type: 3}
@@ -46644,6 +46844,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 9080788254580699109, guid: 7780a5c90b5648242ba07f6ce7cd40c7,
+        type: 3}
+      propertyPath: m_TagString
+      value: GameController
+      objectReference: {fileID: 0}
     - target: {fileID: 9080788254580699110, guid: 7780a5c90b5648242ba07f6ce7cd40c7,
         type: 3}
       propertyPath: m_RootOrder
@@ -48395,8 +48600,33 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
         type: 3}
+      propertyPath: f_OuSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
       propertyPath: f_WalkSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_OuLifeSpan
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_ShootRadius
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_FrightRadius
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446340759982892787, guid: 9d45b1f0d94320244a3220e4823007f1,
+        type: 3}
+      propertyPath: f_ShootAttackSpeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9101407542043135517, guid: 9d45b1f0d94320244a3220e4823007f1,
         type: 3}

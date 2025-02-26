@@ -55,12 +55,23 @@ public class MovementController : MonoBehaviour
 
     public Sajatha sajatha;
 
+    [SerializeField]
+    private int lastAnimState = -1;
+    private const int IdleAnimState = 0;
+    private const int UpAnimState = 1;
+    private const int DownAnimState = 2;
+    private const int RightAnimState = 3;
+    private const int LeftAnimState = 4;
+    private const int AttackAnimState = 5;
+
     public bool b_BouEquipped;
+    
+    private Vector3 v3_LastPosition;
     [SerializeField]
     private bool b_Ded = false;
     void Start()
     {
-        
+        v3_LastPosition = Vector3.zero;
         animator = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
 
@@ -86,6 +97,7 @@ public class MovementController : MonoBehaviour
         }
         if (b_Ded) 
         {
+            animator.SetTrigger("moare");
             StepSound.v_SoundOff();
             return; 
         }
@@ -93,29 +105,19 @@ public class MovementController : MonoBehaviour
         if (b_Freeze)
         {
             StepSound.v_SoundOff();
-            animator.SetFloat("anim_speed", 0);
             return;
-        } else
-        {
-            animator.SetFloat("anim_speed", 0.5f);
         }
 
         if (uInt_HP <= 0 && !b_Ded)
         {
             oneShotSounds.v_DeathSound();
-            animator.SetTrigger("moarte");
             b_Ded = true;
             return;
         }
-        
 
+        v_AnimatorControll();
         float moveX = 0f;
         float moveZ = 0f;
-
-        if (Input.GetKeyDown(moveLeft) && CanAttack) { animator.SetTrigger("stanga"); GetComponent<SpriteRenderer>().flipX = false; }
-        if (Input.GetKeyDown(moveRight) && CanAttack) { animator.SetTrigger("dreapta"); GetComponent<SpriteRenderer>().flipX = false; }
-        if (Input.GetKeyDown(moveForward) && CanAttack) { animator.SetTrigger("sus"); GetComponent<SpriteRenderer>().flipX = false; }
-        if (Input.GetKeyDown(moveBackward) && CanAttack) { animator.SetTrigger("jos"); GetComponent<SpriteRenderer>().flipX = false; }
        
         if (Input.GetKeyDown(changeWeaponKey)) { i_EquippedWeapon = (i_EquippedWeapon + 1) % 2; armamentSounds.v_ChangeWeapon(); }
         if (Input.GetKey(moveLeft)) { moveX = -1f; lastPressedKey = moveLeft; }
@@ -159,6 +161,75 @@ public class MovementController : MonoBehaviour
                 print("te-a muscat lupul de buci");
                 lupAttackTimeStart = Time.time;
                 //gameManager.playerDamage();
+            }
+        }
+        
+    }
+    
+    private void v_AnimatorControll()
+    {
+        if (!CanAttack) 
+        {
+            animator.SetTrigger("attack");
+            lastAnimState = AttackAnimState;
+            float mouseX = Input.mousePosition.x - Screen.width / 2;
+            if (mouseX < 0)
+            {
+                GetComponent<SpriteRenderer>().flipX = true;
+            } else
+            {
+                GetComponent<SpriteRenderer>().flipX = false;
+            }
+        } else
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+            float f_positionDiffX = transform.position.x - v3_LastPosition.x;
+            float f_positionDiffZ = transform.position.z - v3_LastPosition.z;
+            print("ultima pozitie: " + f_positionDiffX + ", " + f_positionDiffZ);
+            v3_LastPosition = transform.position;
+            
+            if (Mathf.Abs(f_positionDiffX) <= (speed / 1000) && 
+                Mathf.Abs(f_positionDiffZ) <= (speed / 1000) && 
+                lastAnimState != IdleAnimState)
+            {
+                //idle
+                lastAnimState = IdleAnimState;
+                animator.SetTrigger("idle");
+                return;
+            }
+
+            if (f_positionDiffZ < 0 && lastAnimState != DownAnimState)
+            {
+                //se misca in jos
+                lastAnimState = DownAnimState;
+                animator.SetTrigger("jos");
+                return;
+            }
+            if (f_positionDiffZ > 0 && lastAnimState != UpAnimState)
+            {
+                //se misca in sus
+                lastAnimState = UpAnimState;
+                animator.SetTrigger("sus");
+                return;
+            }
+
+            if (f_positionDiffX > 0 &&
+                f_positionDiffZ == 0 &&
+                lastAnimState != RightAnimState)
+            {
+                //se misca in dreapta
+                lastAnimState = RightAnimState;
+                animator.SetTrigger("dreapta");
+                return;
+            }
+            if (f_positionDiffX < 0 &&
+                f_positionDiffZ == 0 &&
+                lastAnimState != LeftAnimState)
+            {
+                // se misca in stanga
+                lastAnimState = LeftAnimState;
+                animator.SetTrigger("stanga");
+                return;
             }
         }
 
@@ -303,7 +374,6 @@ public class MovementController : MonoBehaviour
         {
             armamentSounds.v_SwooshSound();
             oneShotSounds.v_AttackSound();
-            animator.SetTrigger("attack");
             //Debug.Log("Attack performed! Last pressed key: " + lastPressedKey);
             CanAttack = false;
             ArmamentSwoosh[i_MouseCadran()].SetActive(true);

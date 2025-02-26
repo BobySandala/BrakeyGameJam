@@ -125,7 +125,6 @@ public class phase_2_UI : MonoBehaviour
     }
 
     void Awake() { Debug.Log("Awake called on " + gameObject.name); }
-    //void Start() { Debug.Log("Start called on " + gameObject.name); }
     void OnEnable() { Debug.Log("OnEnable called on " + gameObject.name); }
 
 
@@ -135,43 +134,12 @@ public class phase_2_UI : MonoBehaviour
 
         print("coxare maxima");
         
+        pressSpaceText = "press enter to skip";
         PressSpace.text = pressSpaceText;
-
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            spacePressed = true;
-        }
-
-        if (!writing_message)
-        {
-            if (spacePressed)
-            {
-                pressSpaceText = "i meant enter";
-            } else
-            {
-                pressSpaceText = "press space";
-            }
-        } else
-        {
-            PressSpace.text = "";
-        }
-
-
 
         if (Input.GetKeyUp(KeyCode.Return))
         {
-            if (!writing_message)
-            {
-                if (current_message < messages.Length)
-                {
-                    NextMessage();
-                    spacePressed = false;
-                } else
-                {
-                    DialogueEnding();
-                }
-            }
+            NextMessage();
         }
 
         if (writing_message)

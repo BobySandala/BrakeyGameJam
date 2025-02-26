@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -23,7 +24,7 @@ public class GainaController : EnemyMovementController
 
     public float f_OuSpeed = 3;
     public float f_OuLifeSpan = 10;
-
+    public bool freeze = false;
     //attack speed ou
     public float f_ShootAttackSpeed;
     //momentulincare a aruncat ultimul ou
@@ -41,6 +42,7 @@ public class GainaController : EnemyMovementController
     // Update is called once per frame
     void Update()
     {
+        if (freeze) { return; }
         base.Update();
         Walk();
         v_ShootEgg();
@@ -81,12 +83,24 @@ public class GainaController : EnemyMovementController
     }
     public void v_TakeDamage()
     {
-        //Destroy(gameObject);
-        //gameObject.SetActive(false);
-        //transform.position -= new Vector3(0, -10, 0);
+        GameObject gm = GameObject.FindGameObjectWithTag("GameController");
+        if (isInfected)
+        {
+            vindecaSalmonela();
+            if (gm.GetComponent<GameManagerScript>() != null)
+            {
+                gm.GetComponent<GameManagerScript>().v_GainaVindecata();
+            }
+            return;
+        }
+
         GetComponent<SphereCollider>().enabled = false;
         GetComponent<CharacterController>().enabled = false;
         print("gaina si-a luat damage");
+        if (gm.GetComponent<GameManagerScript>() != null)
+        {
+            gm.GetComponent<GameManagerScript>().GainaMoarta();
+        }
         Destroy(gameObject);
     }
     private void Walk()

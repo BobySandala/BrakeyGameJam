@@ -12,6 +12,7 @@ public class EnemyHitbox : MonoBehaviour
         if (other.CompareTag("Armament"))
         {
             if (MC_controller != null) { MC_controller.v_TakeDamage(); }
+            if (GainaController != null) { GainaController.v_TakeDamage(); }
             
         }
         if (GainaController != null) 
