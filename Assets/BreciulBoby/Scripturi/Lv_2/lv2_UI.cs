@@ -104,8 +104,12 @@ public class lv2_UI : MonoBehaviour
     {
 
         //print("coxare maxima");
-        
+
         //PressSpace.text = pressSpaceText;
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            NextMessage();
+        }
 
         if (writing_message)
         {

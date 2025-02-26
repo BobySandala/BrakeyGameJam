@@ -97,7 +97,7 @@ public class MovementController : MonoBehaviour
         }
         if (b_Ded) 
         {
-            animator.SetTrigger("moare");
+            animator.SetTrigger("moarte");
             StepSound.v_SoundOff();
             return; 
         }
